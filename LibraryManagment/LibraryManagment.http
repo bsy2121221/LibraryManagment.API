@@ -1,0 +1,193 @@
+@LibraryManagment_HostAddress = http://localhost:5041
+
+GET {{LibraryManagment_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+# @name register
+POST {{LibraryManagment_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test Student",
+  "mobile": "9876543210",
+  "password": "Student@123",
+  "gender": "Male",
+  "address": "12 MG Road, Pune"
+}
+
+###
+
+# @name login
+POST {{LibraryManagment_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "mobile": "9876543210",
+  "password": "Student@123"
+}
+
+###
+
+GET {{LibraryManagment_HostAddress}}/api/auth/me
+Authorization: Bearer {{login.response.body.$.accessToken}}
+
+###
+
+POST {{LibraryManagment_HostAddress}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{{login.response.body.$.refreshToken}}"
+}
+
+###
+
+# @name adminLogin
+# Admin login (seeded from AdminSeed in appsettings.Development.json)
+POST {{LibraryManagment_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "mobile": "9999999999",
+  "password": "Admin@12345"
+}
+
+###
+
+# ---------- Step 1: sections and seat layout (admin) ----------
+
+# @name createBoys
+POST {{LibraryManagment_HostAddress}}/api/admin/sections
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+Content-Type: application/json
+
+{
+  "name": "Boys Section",
+  "gender": "Male",
+  "layoutWidth": 1000,
+  "layoutHeight": 600,
+  "displayOrder": 1
+}
+
+###
+
+POST {{LibraryManagment_HostAddress}}/api/admin/sections
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+Content-Type: application/json
+
+{
+  "name": "Girls Section",
+  "gender": "Female",
+  "displayOrder": 2
+}
+
+###
+
+GET {{LibraryManagment_HostAddress}}/api/admin/sections
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+
+###
+
+# Add 5 rows x 8 seats labelled B1..B40
+POST {{LibraryManagment_HostAddress}}/api/admin/sections/{{createBoys.response.body.$.id}}/seats/generate
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+Content-Type: application/json
+
+{
+  "rows": 5,
+  "columns": 8,
+  "labelPrefix": "B"
+}
+
+###
+
+# @name boysLayout
+GET {{LibraryManagment_HostAddress}}/api/admin/sections/{{createBoys.response.body.$.id}}
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+
+###
+
+# Save the full layout (what the designer sends after drag and drop). Seats left out are removed; id null = new seat.
+PUT {{LibraryManagment_HostAddress}}/api/admin/sections/{{createBoys.response.body.$.id}}/seats
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+Content-Type: application/json
+
+{
+  "seats": [
+    { "id": {{boysLayout.response.body.$.seats[0].id}}, "seatLabel": "B1", "posX": 100, "posY": 80, "rotation": 0, "status": "Active" },
+    { "id": null, "seatLabel": "B99", "posX": 900, "posY": 500, "rotation": 90, "status": "Disabled" }
+  ]
+}
+
+###
+
+# ---------- Public seat map (token optional; marks your own seat with isMine) ----------
+
+GET {{LibraryManagment_HostAddress}}/api/seat-map
+
+###
+
+# ---------- Step 2: booking with 7-minute hold + payment (student) ----------
+
+GET {{LibraryManagment_HostAddress}}/api/settings/public
+
+###
+
+# @name hold
+POST {{LibraryManagment_HostAddress}}/api/bookings/hold
+Authorization: Bearer {{login.response.body.$.accessToken}}
+Content-Type: application/json
+
+{ "seatId": 1 }
+
+###
+
+GET {{LibraryManagment_HostAddress}}/api/bookings/me
+Authorization: Bearer {{login.response.body.$.accessToken}}
+
+###
+
+# @name order
+POST {{LibraryManagment_HostAddress}}/api/bookings/{{hold.response.body.$.id}}/payment-order
+Authorization: Bearer {{login.response.body.$.accessToken}}
+
+###
+
+# With Payment:Provider = Mock, this signature means "paid"
+POST {{LibraryManagment_HostAddress}}/api/payments/verify
+Authorization: Bearer {{login.response.body.$.accessToken}}
+Content-Type: application/json
+
+{
+  "orderId": "{{order.response.body.$.orderId}}",
+  "paymentId": "pay_mock_1",
+  "signature": "mock_signature_success"
+}
+
+###
+
+# ---------- Step 2: admin ----------
+
+# @name adminBookings
+GET {{LibraryManagment_HostAddress}}/api/admin/bookings
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+
+###
+
+POST {{LibraryManagment_HostAddress}}/api/admin/bookings/{{adminBookings.response.body.$[0].id}}/move
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+Content-Type: application/json
+
+{ "toSeatId": 2, "reason": "Asked for a window seat" }
+
+###
+
+POST {{LibraryManagment_HostAddress}}/api/admin/bookings/{{adminBookings.response.body.$[0].id}}/release
+Authorization: Bearer {{adminLogin.response.body.$.accessToken}}
+Content-Type: application/json
+
+{ "reason": "Left the library" }
+
+###

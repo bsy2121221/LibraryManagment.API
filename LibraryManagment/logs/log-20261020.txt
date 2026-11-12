@@ -1,0 +1,176 @@
+2026-10-20 16:24:04.300 +05:30 [INF] Seeded admin user 1 with mobile 9999999999
+2026-10-20 16:24:04.584 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 16:24:04.585 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 16:24:04.585 +05:30 [INF] Hosting environment: Development
+2026-10-20 16:24:04.585 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 16:24:05.649 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-10-20 16:24:05.762 +05:30 [INF] HTTP GET /api/health responded 200 in 140.1124 ms
+2026-10-20 16:24:06.222 +05:30 [INF] Student 2 registered
+2026-10-20 16:24:06.290 +05:30 [INF] HTTP POST /api/auth/register responded 201 in 333.7448 ms
+2026-10-20 16:24:06.651 +05:30 [ERR] HTTP POST /api/auth/register responded 500 in 10.7503 ms
+LibraryManagement.Models.Exceptions.ConflictException: This mobile number is already registered.
+   at LibraryManagement.Services.Services.AuthService.RegisterAsync(RegisterRequest request, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment.Services\Services\AuthService.cs:line 42
+   at LibraryManagement.API.Controllers.AuthController.Register(RegisterRequest request, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment\Controllers\AuthController.cs:line 25
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-10-20 16:24:06.888 +05:30 [INF] HTTP POST /api/auth/register responded 400 in 16.7087 ms
+2026-10-20 16:24:07.318 +05:30 [ERR] HTTP POST /api/auth/login responded 500 in 219.8059 ms
+LibraryManagement.Models.Exceptions.UnauthorizedException: Invalid mobile number or password.
+   at LibraryManagement.Services.Services.AuthService.LoginAsync(LoginRequest request, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment.Services\Services\AuthService.cs:line 68
+   at LibraryManagement.API.Controllers.AuthController.Login(LoginRequest request, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment\Controllers\AuthController.cs:line 33
+   at lambda_method16(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-10-20 16:24:07.635 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 177.1494 ms
+2026-10-20 16:24:08.551 +05:30 [INF] HTTP GET /api/auth/me responded 200 in 72.4113 ms
+2026-10-20 16:24:08.730 +05:30 [INF] HTTP GET /api/auth/me responded 401 in 8.8888 ms
+2026-10-20 16:24:08.929 +05:30 [INF] HTTP POST /api/auth/refresh responded 200 in 32.0881 ms
+2026-10-20 16:24:09.348 +05:30 [WRN] Revoked refresh token reused for user 2; revoking all sessions
+2026-10-20 16:24:09.359 +05:30 [ERR] HTTP POST /api/auth/refresh responded 500 in 14.6814 ms
+LibraryManagement.Models.Exceptions.UnauthorizedException: Session expired. Please log in again.
+   at LibraryManagement.Services.Services.AuthService.RefreshAsync(String refreshToken, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment.Services\Services\AuthService.cs:line 90
+   at LibraryManagement.API.Controllers.AuthController.Refresh(RefreshTokenRequest request, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment\Controllers\AuthController.cs:line 40
+   at lambda_method32(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-10-20 16:24:09.868 +05:30 [WRN] Revoked refresh token reused for user 2; revoking all sessions
+2026-10-20 16:24:09.870 +05:30 [ERR] HTTP POST /api/auth/refresh responded 500 in 3.8939 ms
+LibraryManagement.Models.Exceptions.UnauthorizedException: Session expired. Please log in again.
+   at LibraryManagement.Services.Services.AuthService.RefreshAsync(String refreshToken, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment.Services\Services\AuthService.cs:line 90
+   at LibraryManagement.API.Controllers.AuthController.Refresh(RefreshTokenRequest request, CancellationToken cancellationToken) in C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment\Controllers\AuthController.cs:line 40
+   at lambda_method32(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-10-20 16:24:10.296 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 225.9671 ms
+2026-10-20 16:24:10.620 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 129.8214 ms
+2026-10-20 16:24:49.109 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 16:24:49.147 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 16:24:49.148 +05:30 [INF] Hosting environment: Development
+2026-10-20 16:24:49.148 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 16:24:49.294 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-10-20 16:24:49.409 +05:30 [INF] HTTP GET /api/health responded 200 in 147.7304 ms
+2026-10-20 16:24:50.073 +05:30 [INF] HTTP POST /api/auth/login responded 401 in 481.3286 ms
+2026-10-20 16:35:15.545 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-10-20 16:35:15.695 +05:30 [INF] Now listening on: https://localhost:7221
+2026-10-20 16:35:15.701 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 16:35:16.005 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 16:35:16.008 +05:30 [INF] Hosting environment: Development
+2026-10-20 16:35:16.010 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 16:39:20.873 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-10-20 16:39:20.940 +05:30 [INF] Now listening on: https://localhost:7221
+2026-10-20 16:39:20.943 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 16:39:20.977 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 16:39:20.979 +05:30 [INF] Hosting environment: Development
+2026-10-20 16:39:20.980 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 16:39:22.335 +05:30 [INF] HTTP GET / responded 404 in 142.2964 ms
+2026-10-20 16:39:34.992 +05:30 [INF] HTTP GET / responded 404 in 1.7539 ms
+2026-10-20 16:39:35.945 +05:30 [INF] HTTP GET / responded 404 in 3.5099 ms
+2026-10-20 16:40:38.888 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-10-20 16:40:39.037 +05:30 [INF] Now listening on: https://localhost:7221
+2026-10-20 16:40:39.042 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 16:40:39.116 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 16:40:39.129 +05:30 [INF] Hosting environment: Development
+2026-10-20 16:40:39.130 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 16:40:40.385 +05:30 [INF] HTTP GET /swagger responded 301 in 12.4603 ms
+2026-10-20 16:40:40.621 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 178.5858 ms
+2026-10-20 16:40:40.668 +05:30 [INF] HTTP GET /swagger/index.js responded 200 in 4.7022 ms
+2026-10-20 16:40:40.694 +05:30 [INF] HTTP GET /swagger/index.css responded 200 in 31.5404 ms
+2026-10-20 16:40:40.769 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 107.8724 ms
+2026-10-20 16:40:40.769 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 106.3905 ms
+2026-10-20 16:40:40.802 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 139.4994 ms
+2026-10-20 16:40:41.528 +05:30 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.7320 ms
+2026-10-20 16:40:41.537 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 31.9047 ms
+2026-10-20 16:40:56.946 +05:30 [INF] HTTP GET /api/Health responded 200 in 96.7258 ms
+2026-10-20 16:41:06.934 +05:30 [ERR] HTTP GET /api/Health/database responded 503 in 39.7675 ms
+2026-10-20 17:52:27.141 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 17:52:27.178 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 17:52:27.178 +05:30 [INF] Hosting environment: Development
+2026-10-20 17:52:27.178 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 17:52:27.541 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-10-20 17:52:27.608 +05:30 [INF] HTTP GET /api/health responded 200 in 83.8117 ms
+2026-10-20 17:52:28.195 +05:30 [INF] Student 3 registered
+2026-10-20 17:52:28.264 +05:30 [INF] HTTP POST /api/auth/register responded 201 in 486.9765 ms
+2026-10-20 17:52:28.467 +05:30 [INF] HTTP POST /api/auth/register responded 409 in 34.4141 ms
+2026-10-20 17:52:29.049 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 404.1301 ms
+2026-10-20 17:52:29.960 +05:30 [INF] HTTP GET /api/auth/me responded 200 in 88.5026 ms
+2026-10-20 17:52:30.212 +05:30 [INF] HTTP POST /api/auth/refresh responded 200 in 37.0899 ms
+2026-10-20 17:52:31.141 +05:30 [WRN] Revoked refresh token reused for user 3; revoking all sessions
+2026-10-20 17:52:31.154 +05:30 [INF] HTTP POST /api/auth/refresh responded 401 in 16.8596 ms
+2026-10-20 17:52:31.346 +05:30 [WRN] Revoked refresh token reused for user 3; revoking all sessions
+2026-10-20 17:52:31.348 +05:30 [INF] HTTP POST /api/auth/refresh responded 401 in 4.0508 ms
+2026-10-20 17:52:31.856 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 301.4277 ms
+2026-10-20 17:54:58.486 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-10-20 17:54:58.645 +05:30 [INF] Now listening on: https://localhost:7221
+2026-10-20 17:54:58.649 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 17:54:58.714 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 17:54:58.715 +05:30 [INF] Hosting environment: Development
+2026-10-20 17:54:58.716 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 17:54:59.664 +05:30 [INF] HTTP GET /swagger responded 301 in 14.5619 ms
+2026-10-20 17:54:59.923 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 196.3043 ms
+2026-10-20 17:54:59.956 +05:30 [INF] HTTP GET /swagger/index.js responded 200 in 4.2350 ms
+2026-10-20 17:55:00.013 +05:30 [INF] HTTP GET /swagger/index.css responded 200 in 36.5347 ms
+2026-10-20 17:55:00.062 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 113.1760 ms
+2026-10-20 17:55:00.070 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 120.0638 ms
+2026-10-20 17:55:00.079 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 129.8449 ms
+2026-10-20 17:55:00.985 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 29.2366 ms
+2026-10-20 18:01:31.552 +05:30 [INF] Seeded admin user 1 with mobile 9999999999
+2026-10-20 18:01:31.735 +05:30 [INF] Now listening on: http://localhost:5041
+2026-10-20 18:01:31.735 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-20 18:01:31.736 +05:30 [INF] Hosting environment: Development
+2026-10-20 18:01:31.736 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-10-20 18:01:32.367 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-10-20 18:01:32.434 +05:30 [INF] HTTP GET /api/health responded 200 in 85.1884 ms
+2026-10-20 18:01:32.782 +05:30 [INF] Student 2 registered
+2026-10-20 18:01:32.838 +05:30 [INF] HTTP POST /api/auth/register responded 201 in 273.2890 ms
+2026-10-20 18:01:33.145 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 188.8013 ms
+2026-10-20 18:01:33.600 +05:30 [INF] HTTP POST /api/auth/refresh responded 200 in 41.9668 ms
+2026-10-20 18:01:33.936 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 183.6625 ms

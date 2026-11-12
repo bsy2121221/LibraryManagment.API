@@ -1,0 +1,8 @@
+CREATE PROCEDURE dbo.usp_User_MobileExists
+    @Mobile VARCHAR(15)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT CAST(CASE WHEN EXISTS (SELECT 1 FROM dbo.Users WHERE Mobile = @Mobile) THEN 1 ELSE 0 END AS BIT);
+END

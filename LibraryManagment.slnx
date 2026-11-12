@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/LibraryManagment.Services/">
+    <Project Path="LibraryManagment.Services/LibraryManagement.Services.csproj" />
+  </Folder>
+  <Project Path="LibraryManagment.Auth/LibraryManagement.Auth.csproj" />
+  <Project Path="LibraryManagment.DataAccess/LibraryManagement.DataAccess.csproj" />
+  <Project Path="LibraryManagment.Database/LibraryManagement.Database.sqlproj" Id="ba38c30b-2b36-4994-a408-fa1eedeecc0d">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="LibraryManagment.Models/LibraryManagement.Models.csproj" />
+  <Project Path="LibraryManagment/LibraryManagement.API.csproj" />
+</Solution>

@@ -1,0 +1,8 @@
+-- Role 1 = Admin
+CREATE PROCEDURE dbo.usp_User_AnyAdminExists
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT CAST(CASE WHEN EXISTS (SELECT 1 FROM dbo.Users WHERE Role = 1) THEN 1 ELSE 0 END AS BIT);
+END
