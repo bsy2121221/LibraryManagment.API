@@ -18,6 +18,12 @@ SET ANSI_NULLS ON;
 SET QUOTED_IDENTIFIER ON;
 GO
 
+-- Shared: other procedures queue messages through this one, so it is created first
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_EnqueueEvent;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_EnqueueEvent.sql
+GO
+
 -- Users
 DROP PROCEDURE IF EXISTS dbo.usp_User_GetById;
 GO
@@ -176,4 +182,92 @@ GO
 DROP PROCEDURE IF EXISTS dbo.usp_Setting_UpdateMany;
 GO
 :r $(DbProjectPath)\StoredProcedures\dbo.usp_Setting_UpdateMany.sql
+GO
+
+-- Step 4: notifications (queue), fees and billing
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_EnqueueFeeReminders;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_EnqueueFeeReminders.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_ClaimBatch;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_ClaimBatch.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_MarkSent;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_MarkSent.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_MarkFailed;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_MarkFailed.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_GetForAdmin;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_GetForAdmin.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_GetSummary;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_GetSummary.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_Retry;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_Retry.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Notification_Cancel;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Notification_Cancel.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_NotificationEvent_GetAll;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_NotificationEvent_GetAll.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_NotificationEvent_SaveChannel;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_NotificationEvent_SaveChannel.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_NotificationRule_GetAll;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_NotificationRule_GetAll.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_NotificationRule_Save;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_NotificationRule_Save.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_NotificationRule_Delete;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_NotificationRule_Delete.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Billing_Run;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Billing_Run.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_FeeInvoice_GetById;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_FeeInvoice_GetById.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_FeeInvoice_GetByUser;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_FeeInvoice_GetByUser.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_FeeInvoice_GetForAdmin;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_FeeInvoice_GetForAdmin.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_FeeInvoice_MarkPaid;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_FeeInvoice_MarkPaid.sql
+GO
+
+-- Walk-in students: admin registers, assigns a seat, adds fees
+DROP PROCEDURE IF EXISTS dbo.usp_User_CreateByAdmin;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_User_CreateByAdmin.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_Booking_AssignByAdmin;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_Booking_AssignByAdmin.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_FeeInvoice_CreateByAdmin;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_FeeInvoice_CreateByAdmin.sql
 GO

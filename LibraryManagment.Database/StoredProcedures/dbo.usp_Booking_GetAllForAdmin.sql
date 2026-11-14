@@ -11,7 +11,7 @@ BEGIN
     DECLARE @Pattern NVARCHAR(102) = IIF(NULLIF(LTRIM(RTRIM(@Search)), N'') IS NULL, NULL, CONCAT(N'%', LTRIM(RTRIM(@Search)), N'%'));
 
     SELECT TOP (500)
-           d.Id, d.UserId, d.SeatId, d.Status, d.HoldExpiresAt, d.StartDate, d.NextDueDate, d.ReleasedAt, d.ReleaseReason, d.CreatedAt,
+           d.Id, d.UserId, d.SeatId, d.Status, d.HoldExpiresAt, d.StartDate, d.NextDueDate, d.HasOverdueFee, d.ReleasedAt, d.ReleaseReason, d.CreatedAt,
            d.SeatLabel, d.SectionId, d.SectionName, d.SectionGender, d.StudentName, d.StudentMobile, d.StudentEmail
     FROM dbo.vw_BookingDetails d
     JOIN dbo.Sections sec ON sec.Id = d.SectionId

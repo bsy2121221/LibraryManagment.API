@@ -50,6 +50,22 @@ namespace LibraryManagement.Services.Services
         public async Task<int> GetSeatHoldMinutesAsync(CancellationToken cancellationToken = default)
             => SeatHoldMinutes(await LoadAsync(cancellationToken));
 
+        public async Task<BillingSettings> GetBillingSettingsAsync(CancellationToken cancellationToken = default)
+        {
+            var settings = await LoadAsync(cancellationToken);
+            return new BillingSettings(
+                MonthlyFee(settings),
+                IntSetting(settings, SettingKeys.InvoiceGenerationDaysBefore, 5, 0, 28),
+                IntSetting(settings, SettingKeys.GraceDays, 3, 0, 30),
+                IntSetting(settings, SettingKeys.AutoReleaseAfterOverdueDays, 0, 0, 365));
+        }
+
+        private static int IntSetting(Dictionary<string, string> s, string key, int fallback, int min, int max)
+            => s.TryGetValue(key, out var value)
+               && int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var number) && number >= min && number <= max
+                ? number
+                : fallback;
+
         public async Task<IReadOnlyList<AdminSettingDto>> GetAllForAdminAsync(CancellationToken cancellationToken = default)
         {
             var rows = await _settingRepository.GetAllAsync(cancellationToken);

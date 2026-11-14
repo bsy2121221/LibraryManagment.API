@@ -12,6 +12,7 @@ namespace LibraryManagement.Models.Entities
         public DateTime? HoldExpiresAt { get; set; }
         public DateOnly? StartDate { get; set; }
         public DateOnly? NextDueDate { get; set; }
+        public bool HasOverdueFee { get; set; }
         public DateTime? ReleasedAt { get; set; }
         public string? ReleaseReason { get; set; }
         public DateTime CreatedAt { get; set; }

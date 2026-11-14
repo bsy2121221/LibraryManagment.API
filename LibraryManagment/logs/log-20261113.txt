@@ -1,0 +1,162 @@
+2026-11-13 00:40:01.564 +05:30 [INF] Seeded admin user 1 with mobile 9999999999
+2026-11-13 00:40:01.743 +05:30 [INF] Notification dispatcher started, running every "00:00:10"
+2026-11-13 00:40:01.834 +05:30 [INF] Now listening on: http://localhost:5099
+2026-11-13 00:40:01.835 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-13 00:40:01.835 +05:30 [INF] Hosting environment: Development
+2026-11-13 00:40:01.835 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-11-13 00:40:01.974 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-11-13 00:40:02.059 +05:30 [INF] HTTP GET /api/health responded 200 in 110.1398 ms
+2026-11-13 00:40:03.293 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 340.6703 ms
+2026-11-13 00:40:03.392 +05:30 [INF] Section 1 'Boys Section' created
+2026-11-13 00:40:03.457 +05:30 [INF] HTTP POST /api/admin/sections responded 201 in 160.3632 ms
+2026-11-13 00:40:03.580 +05:30 [INF] Generated 3 seats in section 1
+2026-11-13 00:40:03.642 +05:30 [INF] HTTP POST /api/admin/sections/1/seats/generate responded 200 in 182.1121 ms
+2026-11-13 00:40:03.817 +05:30 [INF] Student 2 registered
+2026-11-13 00:40:03.820 +05:30 [INF] HTTP POST /api/auth/register responded 201 in 174.3752 ms
+2026-11-13 00:40:03.875 +05:30 [INF] User 2 holds seat 1 (booking 1) until "2026-11-12T19:17:04.0000000Z"
+2026-11-13 00:40:03.882 +05:30 [INF] HTTP POST /api/bookings/hold responded 200 in 60.0915 ms
+2026-11-13 00:40:03.908 +05:30 [INF] Payment order order_mock_fd8c316e9e9541c6995 (Mock) created for booking 1, amount 1000
+2026-11-13 00:40:03.912 +05:30 [INF] HTTP POST /api/bookings/1/payment-order responded 200 in 27.5982 ms
+2026-11-13 00:40:04.065 +05:30 [INF] Order order_mock_fd8c316e9e9541c6995 confirmed booking 1 ("Confirmed")
+2026-11-13 00:40:04.081 +05:30 [INF] HTTP POST /api/payments/verify responded 200 in 166.9578 ms
+2026-11-13 00:40:04.334 +05:30 [INF] HTTP GET /api/admin/students/2 responded 200 in 90.7266 ms
+2026-11-13 00:40:04.363 +05:30 [INF] Admin 1 updated student 2 (active: true)
+2026-11-13 00:40:04.368 +05:30 [INF] HTTP PUT /api/admin/students/2 responded 200 in 31.5882 ms
+2026-11-13 00:40:04.409 +05:30 [INF] Admin 1 moved booking 1 to seat 2
+2026-11-13 00:40:04.410 +05:30 [INF] HTTP POST /api/admin/bookings/1/move responded 200 in 39.9115 ms
+2026-11-13 00:40:09.888 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 7.7121 ms
+2026-11-13 00:40:11.779 +05:30 [INF] [MOCK "Sms"] #1 to 9876500001: Dear Ravi Kumar, your seat B1 (Boys Section) at My Library is booked from 13 Nov 2026. Fee paid: Rs.1000. Next fee due 13 Dec 2026.
+2026-11-13 00:40:11.779 +05:30 [INF] [MOCK "WhatsApp"] #2 to 9876500001: Hello Ravi Kumar! Welcome to My Library. Your seat *B1* in Boys Section is booked from 13 Nov 2026. Paid Rs.1000. Next fee due on 13 Dec 2026.
+2026-11-13 00:40:11.779 +05:30 [INF] [MOCK "Sms"] #4 to 9876500001: Dear Ravi K, My Library updated your details: name, address. Contact the library if this was not expected.
+2026-11-13 00:40:11.779 +05:30 [INF] [MOCK "Email"] #3 to ravi@example.com | My Library: Seat B1 booked: Dear Ravi Kumar,<br/><br/>Welcome to My Library! Your seat <b>B1</b> in Boys Section is booked from 13 Nov 2026.<br/>Amount paid: Rs.1000<br/>Next fee due: 13 Dec 2026<br/><br/>Regards,<br/>My Library
+2026-11-13 00:40:11.789 +05:30 [INF] [MOCK "WhatsApp"] #5 to 9876500001: Hello Ravi K, your details at My Library were updated: name, address.
+2026-11-13 00:40:11.789 +05:30 [INF] [MOCK "WhatsApp"] #8 to 9876500001: Hello Ravi K, your seat at My Library has changed from B1 to *B2* (Boys Section).
+2026-11-13 00:40:11.789 +05:30 [INF] [MOCK "Sms"] #7 to 9876500001: Dear Ravi K, My Library has moved you from seat B1 to seat B2 (Boys Section).
+2026-11-13 00:40:11.789 +05:30 [INF] [MOCK "Email"] #6 to ravi@example.com | My Library: Your details were updated: Dear Ravi K,<br/><br/>The library updated your details: name, address.<br/>If you did not expect this, please contact us.<br/><br/>Regards,<br/>My Library
+2026-11-13 00:40:11.790 +05:30 [INF] [MOCK "Email"] #9 to ravi@example.com | My Library: Your seat is now B2: Dear Ravi K,<br/><br/>Your seat has been changed from B1 to <b>B2</b> (Boys Section).<br/>Reason: Window seat<br/><br/>Regards,<br/>My Library
+2026-11-13 00:40:11.791 +05:30 [INF] Notification dispatcher processed 9 message(s)
+2026-11-13 00:40:14.999 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 2.2480 ms
+2026-11-13 00:40:20.111 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 2.0644 ms
+2026-11-13 00:40:25.227 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 2.0565 ms
+2026-11-13 00:40:30.338 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.9751 ms
+2026-11-13 00:40:35.475 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 10.9036 ms
+2026-11-13 00:40:40.606 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 16.5131 ms
+2026-11-13 00:40:45.716 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 2.5308 ms
+2026-11-13 00:40:50.829 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.4530 ms
+2026-11-13 00:40:55.945 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.6372 ms
+2026-11-13 00:41:01.064 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.4935 ms
+2026-11-13 00:41:06.180 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 2.0305 ms
+2026-11-13 00:41:11.300 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.3608 ms
+2026-11-13 00:41:16.424 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 4.0844 ms
+2026-11-13 00:41:21.580 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 2.3995 ms
+2026-11-13 00:41:21.818 +05:30 [INF] HTTP GET /api/bookings/me responded 200 in 12.9477 ms
+2026-11-13 00:41:45.045 +05:30 [INF] Seeded admin user 1 with mobile 9999999999
+2026-11-13 00:41:45.253 +05:30 [INF] Notification dispatcher started, running every "00:00:10"
+2026-11-13 00:41:45.331 +05:30 [INF] Now listening on: http://localhost:5099
+2026-11-13 00:41:45.331 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-13 00:41:45.331 +05:30 [INF] Hosting environment: Development
+2026-11-13 00:41:45.331 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-11-13 00:41:46.322 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-11-13 00:41:46.380 +05:30 [INF] HTTP GET /api/health responded 200 in 79.1120 ms
+2026-11-13 00:41:47.289 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 283.5885 ms
+2026-11-13 00:41:47.367 +05:30 [INF] Section 1 'Boys Section' created
+2026-11-13 00:41:47.406 +05:30 [INF] HTTP POST /api/admin/sections responded 201 in 113.6197 ms
+2026-11-13 00:41:47.530 +05:30 [INF] Generated 3 seats in section 1
+2026-11-13 00:41:47.598 +05:30 [INF] HTTP POST /api/admin/sections/1/seats/generate responded 200 in 188.3479 ms
+2026-11-13 00:41:47.769 +05:30 [INF] Student 2 registered
+2026-11-13 00:41:47.772 +05:30 [INF] HTTP POST /api/auth/register responded 201 in 170.8977 ms
+2026-11-13 00:41:47.826 +05:30 [INF] User 2 holds seat 1 (booking 1) until "2026-11-12T19:18:48.0000000Z"
+2026-11-13 00:41:47.832 +05:30 [INF] HTTP POST /api/bookings/hold responded 200 in 58.6835 ms
+2026-11-13 00:41:47.859 +05:30 [INF] Payment order order_mock_897e80d2c150487ebf0 (Mock) created for booking 1, amount 1000
+2026-11-13 00:41:47.862 +05:30 [INF] HTTP POST /api/bookings/1/payment-order responded 200 in 27.6438 ms
+2026-11-13 00:41:47.968 +05:30 [INF] Order order_mock_897e80d2c150487ebf0 confirmed booking 1 ("Confirmed")
+2026-11-13 00:41:47.983 +05:30 [INF] HTTP POST /api/payments/verify responded 200 in 119.2499 ms
+2026-11-13 00:41:48.215 +05:30 [INF] HTTP GET /api/admin/students/2 responded 200 in 89.9769 ms
+2026-11-13 00:41:48.242 +05:30 [INF] Admin 1 updated student 2 (active: true)
+2026-11-13 00:41:48.245 +05:30 [INF] HTTP PUT /api/admin/students/2 responded 200 in 27.4379 ms
+2026-11-13 00:41:48.283 +05:30 [INF] Admin 1 moved booking 1 to seat 2
+2026-11-13 00:41:48.284 +05:30 [INF] HTTP POST /api/admin/bookings/1/move responded 200 in 37.2885 ms
+2026-11-13 00:41:53.776 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 7.0386 ms
+2026-11-13 00:41:55.269 +05:30 [INF] [MOCK "WhatsApp"] #2 to 9876500001: Hello Ravi Kumar! Welcome to My Library. Your seat *B1* in Boys Section is booked from 13 Nov 2026. Paid Rs.1000. Next fee due on 13 Dec 2026.
+2026-11-13 00:41:55.269 +05:30 [INF] [MOCK "Sms"] #4 to 9876500001: Dear Ravi K, My Library updated your details: name, address. Contact the library if this was not expected.
+2026-11-13 00:41:55.269 +05:30 [INF] [MOCK "Email"] #3 to ravi@example.com | My Library: Seat B1 booked: Dear Ravi Kumar,<br/><br/>Welcome to My Library! Your seat <b>B1</b> in Boys Section is booked from 13 Nov 2026.<br/>Amount paid: Rs.1000<br/>Next fee due: 13 Dec 2026<br/><br/>Regards,<br/>My Library
+2026-11-13 00:41:55.269 +05:30 [INF] [MOCK "Sms"] #1 to 9876500001: Dear Ravi Kumar, your seat B1 (Boys Section) at My Library is booked from 13 Nov 2026. Fee paid: Rs.1000. Next fee due 13 Dec 2026.
+2026-11-13 00:41:55.282 +05:30 [INF] [MOCK "WhatsApp"] #5 to 9876500001: Hello Ravi K, your details at My Library were updated: name, address.
+2026-11-13 00:41:55.282 +05:30 [INF] [MOCK "Email"] #6 to ravi@example.com | My Library: Your details were updated: Dear Ravi K,<br/><br/>The library updated your details: name, address.<br/>If you did not expect this, please contact us.<br/><br/>Regards,<br/>My Library
+2026-11-13 00:41:55.284 +05:30 [INF] [MOCK "Sms"] #7 to 9876500001: Dear Ravi K, My Library has moved you from seat B1 to seat B2 (Boys Section).
+2026-11-13 00:41:55.284 +05:30 [INF] [MOCK "WhatsApp"] #8 to 9876500001: Hello Ravi K, your seat at My Library has changed from B1 to *B2* (Boys Section).
+2026-11-13 00:41:55.285 +05:30 [INF] [MOCK "Email"] #9 to ravi@example.com | My Library: Your seat is now B2: Dear Ravi K,<br/><br/>Your seat has been changed from B1 to <b>B2</b> (Boys Section).<br/>Reason: Window seat<br/><br/>Regards,<br/>My Library
+2026-11-13 00:41:55.287 +05:30 [INF] Notification dispatcher processed 9 message(s)
+2026-11-13 00:41:58.896 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.7053 ms
+2026-11-13 00:42:04.004 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 2.5939 ms
+2026-11-13 00:42:09.119 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.3961 ms
+2026-11-13 00:42:14.239 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.1537 ms
+2026-11-13 00:42:19.368 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 3.1261 ms
+2026-11-13 00:42:24.485 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.4607 ms
+2026-11-13 00:42:29.609 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.3776 ms
+2026-11-13 00:42:34.722 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.8390 ms
+2026-11-13 00:42:39.836 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.6459 ms
+2026-11-13 00:42:44.968 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 12.3140 ms
+2026-11-13 00:42:45.302 +05:30 [INF] Billing: 1 fee(s) created, 0 marked overdue, 0 seat(s) released
+2026-11-13 00:42:45.361 +05:30 [INF] Billing: queued 3 fee reminder(s)
+2026-11-13 00:42:50.101 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 11.7832 ms
+2026-11-13 00:42:50.334 +05:30 [INF] HTTP GET /api/bookings/me responded 200 in 13.1649 ms
+2026-11-13 00:42:50.361 +05:30 [INF] Payment order order_mock_b09b256a62324fdcb45 (Mock) created for fee 2, amount 1000.00
+2026-11-13 00:42:50.362 +05:30 [INF] HTTP POST /api/fees/2/payment-order responded 200 in 26.6227 ms
+2026-11-13 00:42:50.400 +05:30 [INF] Order order_mock_b09b256a62324fdcb45 confirmed booking 1 ("Confirmed")
+2026-11-13 00:42:50.400 +05:30 [INF] HTTP POST /api/payments/verify responded 200 in 34.9609 ms
+2026-11-13 00:42:50.414 +05:30 [INF] HTTP POST /api/fees/2/payment-order responded 409 in 12.2162 ms
+2026-11-13 00:42:55.273 +05:30 [INF] [MOCK "Sms"] #10 to 9876500001: Dear Ravi K, your My Library fee of Rs.1000 is due on 15 Nov 2026. Please pay on time.
+2026-11-13 00:42:55.273 +05:30 [INF] [MOCK "WhatsApp"] #11 to 9876500001: Hello Ravi K, a reminder from My Library: your fee of Rs.1000 for seat B2 is due on 15 Nov 2026.
+2026-11-13 00:42:55.273 +05:30 [INF] [MOCK "Email"] #12 to ravi@example.com | My Library: Fee due on 15 Nov 2026: Dear Ravi K,<br/><br/>Your monthly fee of Rs.1000 for seat B2 (15 Nov 2026 to 12 Dec 2026) is due on 15 Nov 2026. You can pay online from the My seat page.<br/><br/>Regards,<br/>My Library
+2026-11-13 00:42:55.274 +05:30 [INF] [MOCK "Sms"] #13 to 9876500001: Dear Ravi K, we received Rs.1000 for 15 Nov 2026 to 12 Dec 2026. Thank you! - My Library
+2026-11-13 00:42:55.278 +05:30 [INF] [MOCK "WhatsApp"] #14 to 9876500001: Hello Ravi K, payment of Rs.1000 received for 15 Nov 2026 to 12 Dec 2026. Thank you! - My Library
+2026-11-13 00:42:55.278 +05:30 [INF] [MOCK "Email"] #15 to ravi@example.com | My Library: Payment received: Dear Ravi K,<br/><br/>We received your payment of Rs.1000 for seat B2, period 15 Nov 2026 to 12 Dec 2026.<br/>Next fee due: 13 Dec 2026<br/><br/>Thank you,<br/>My Library
+2026-11-13 00:42:55.282 +05:30 [INF] Notification dispatcher processed 6 message(s)
+2026-11-13 00:42:55.882 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 14.9046 ms
+2026-11-13 00:42:55.914 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 29.6125 ms
+2026-11-13 00:42:55.931 +05:30 [INF] HTTP GET /api/admin/notifications/events responded 200 in 14.3873 ms
+2026-11-13 00:42:55.958 +05:30 [INF] HTTP GET /api/admin/notifications/rules responded 200 in 25.1466 ms
+2026-11-13 00:42:55.983 +05:30 [INF] Notification messages for SeatBooked updated
+2026-11-13 00:42:55.984 +05:30 [INF] HTTP PUT /api/admin/notifications/events/SeatBooked responded 200 in 24.2119 ms
+2026-11-13 00:42:56.047 +05:30 [INF] Reminder rule 4 'On due date' saved
+2026-11-13 00:42:56.049 +05:30 [INF] HTTP POST /api/admin/notifications/rules responded 200 in 62.6232 ms
+2026-11-13 00:42:56.061 +05:30 [INF] Reminder rule 4 'On due date' saved
+2026-11-13 00:42:56.062 +05:30 [INF] HTTP PUT /api/admin/notifications/rules/4 responded 200 in 10.9346 ms
+2026-11-13 00:42:56.099 +05:30 [INF] Reminder rule 4 deleted
+2026-11-13 00:42:56.100 +05:30 [INF] HTTP DELETE /api/admin/notifications/rules/4 responded 204 in 35.8107 ms
+2026-11-13 00:42:56.227 +05:30 [INF] Admin 1 released booking 1: Left the library
+2026-11-13 00:42:56.227 +05:30 [INF] HTTP POST /api/admin/bookings/1/release responded 204 in 18.4834 ms
+2026-11-13 00:42:56.340 +05:30 [INF] HTTP PUT /api/admin/notifications/events/SeatBooked responded 400 in 2.1402 ms
+2026-11-13 00:43:05.261 +05:30 [INF] [MOCK "Sms"] #16 to 9876500001: Dear Ravi K, your seat B2 at My Library has been released. Reason: Left the library. Contact the library for help.
+2026-11-13 00:43:05.262 +05:30 [INF] [MOCK "WhatsApp"] #17 to 9876500001: Hello Ravi K, your seat B2 at My Library has been released. Reason: Left the library.
+2026-11-13 00:43:05.262 +05:30 [INF] [MOCK "Email"] #18 to ravi@example.com | My Library: Seat B2 released: Dear Ravi K,<br/><br/>Your seat B2 (Boys Section) has been released.<br/>Reason: Left the library<br/><br/>Please contact the library if you have questions.<br/><br/>Regards,<br/>My Library
+2026-11-13 00:43:05.263 +05:30 [INF] Notification dispatcher processed 3 message(s)
+2026-11-13 00:43:27.969 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 112.7709 ms
+2026-11-13 00:43:27.990 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 19.1431 ms
+2026-11-13 00:43:28.019 +05:30 [INF] HTTP GET /api/admin/sections/1 responded 200 in 27.8759 ms
+2026-11-13 00:43:28.134 +05:30 [INF] Student 3 registered
+2026-11-13 00:43:28.135 +05:30 [INF] HTTP POST /api/auth/register responded 201 in 114.1807 ms
+2026-11-13 00:43:28.155 +05:30 [INF] User 3 holds seat 3 (booking 2) until "2026-11-12T19:20:28.0000000Z"
+2026-11-13 00:43:28.155 +05:30 [INF] HTTP POST /api/bookings/hold responded 200 in 18.6595 ms
+2026-11-13 00:43:28.160 +05:30 [INF] Payment order order_mock_c51a12afe9734d8f827 (Mock) created for booking 2, amount 1000
+2026-11-13 00:43:28.160 +05:30 [INF] HTTP POST /api/bookings/2/payment-order responded 200 in 2.6677 ms
+2026-11-13 00:43:28.165 +05:30 [INF] Order order_mock_c51a12afe9734d8f827 confirmed booking 2 ("Confirmed")
+2026-11-13 00:43:28.166 +05:30 [INF] HTTP POST /api/payments/verify responded 200 in 4.0801 ms
+2026-11-13 00:43:35.272 +05:30 [INF] [MOCK "Sms"] #19 to 9876500002: Dear Amit Shah, your seat B3 (Boys Section) at My Library is booked from 13 Nov 2026. Fee paid: Rs.1000. Next fee due 13 Dec 2026.
+2026-11-13 00:43:35.272 +05:30 [INF] [MOCK "WhatsApp"] #20 to 9876500002: Hello Amit Shah! Welcome to My Library. Your seat *B3* in Boys Section is booked from 13 Nov 2026. Paid Rs.1000. Next fee due on 13 Dec 2026.
+2026-11-13 00:43:35.273 +05:30 [INF] [MOCK "Call"] #21 to 9876500002: Hello Amit Shah, your seat B3 is booked.
+2026-11-13 00:43:35.276 +05:30 [INF] Notification dispatcher processed 3 message(s)
+2026-11-13 00:43:45.286 +05:30 [INF] Billing: 1 fee(s) created, 1 marked overdue, 0 seat(s) released
+2026-11-13 00:43:49.143 +05:30 [INF] HTTP GET /api/bookings/me responded 200 in 11.6588 ms
+2026-11-13 00:44:54.284 +05:30 [INF] Admin 1 updated settings AutoReleaseAfterOverdueDays
+2026-11-13 00:44:54.290 +05:30 [INF] HTTP PUT /api/admin/settings responded 200 in 29.8935 ms
+2026-11-13 00:45:45.313 +05:30 [INF] Billing: 0 fee(s) created, 0 marked overdue, 1 seat(s) released
+2026-11-13 00:45:45.807 +05:30 [INF] Admin 1 updated settings AutoReleaseAfterOverdueDays
+2026-11-13 00:45:45.808 +05:30 [INF] HTTP PUT /api/admin/settings responded 200 in 12.0510 ms
+2026-11-13 00:45:45.936 +05:30 [INF] HTTP POST /api/admin/notifications/23/cancel responded 204 in 10.7424 ms
+2026-11-13 00:45:46.056 +05:30 [INF] HTTP POST /api/admin/notifications/23/cancel responded 409 in 3.3054 ms
+2026-11-13 00:45:46.066 +05:30 [INF] HTTP POST /api/admin/notifications/23/retry responded 204 in 8.3468 ms
+2026-11-13 00:45:55.261 +05:30 [INF] [MOCK "Sms"] #22 to 9876500002: Dear Amit Shah, your seat B3 at My Library has been released. Reason: Released automatically: fee due on 03 Nov 2026 was not paid. Contact the library for help.
+2026-11-13 00:45:55.261 +05:30 [INF] [MOCK "WhatsApp"] #23 to 9876500002: Hello Amit Shah, your seat B3 at My Library has been released. Reason: Released automatically: fee due on 03 Nov 2026 was not paid.
+2026-11-13 00:45:55.272 +05:30 [INF] Notification dispatcher processed 2 message(s)

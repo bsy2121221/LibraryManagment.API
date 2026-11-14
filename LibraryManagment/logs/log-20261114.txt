@@ -1,0 +1,219 @@
+2026-11-14 12:47:23.563 +05:30 [INF] Notification dispatcher started, running every "00:01:00"
+2026-11-14 12:47:23.880 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-11-14 12:47:24.008 +05:30 [INF] Now listening on: https://localhost:7221
+2026-11-14 12:47:24.014 +05:30 [INF] Now listening on: http://localhost:5041
+2026-11-14 12:47:24.124 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-14 12:47:24.127 +05:30 [INF] Hosting environment: Development
+2026-11-14 12:47:24.131 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-11-14 12:47:25.731 +05:30 [INF] HTTP GET /swagger responded 301 in 15.9716 ms
+2026-11-14 12:47:25.995 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 217.4499 ms
+2026-11-14 12:47:26.024 +05:30 [INF] HTTP GET /swagger/index.js responded 200 in 2.1227 ms
+2026-11-14 12:47:26.127 +05:30 [INF] HTTP GET /swagger/index.css responded 200 in 104.9394 ms
+2026-11-14 12:47:26.186 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 164.4973 ms
+2026-11-14 12:47:26.186 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 164.5440 ms
+2026-11-14 12:47:26.203 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 181.8025 ms
+2026-11-14 12:47:27.494 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 150.1580 ms
+2026-11-14 12:48:33.464 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 326.1909 ms
+2026-11-14 12:48:35.614 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 121.4406 ms
+2026-11-14 12:48:35.641 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 10.7792 ms
+2026-11-14 12:48:42.791 +05:30 [INF] HTTP GET /api/admin/sections responded 401 in 25.6752 ms
+2026-11-14 12:48:42.830 +05:30 [INF] HTTP GET /api/admin/sections responded 401 in 2.6690 ms
+2026-11-14 12:48:43.084 +05:30 [INF] HTTP POST /api/auth/refresh responded 200 in 246.8053 ms
+2026-11-14 12:48:43.233 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 105.7665 ms
+2026-11-14 12:48:43.253 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 3.7579 ms
+2026-11-14 12:48:50.082 +05:30 [INF] HTTP GET /api/admin/bookings responded 200 in 122.9680 ms
+2026-11-14 12:49:05.679 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 89.2549 ms
+2026-11-14 12:49:10.726 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 71.7023 ms
+2026-11-14 12:49:16.599 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 51.3294 ms
+2026-11-14 12:49:16.609 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 62.5147 ms
+2026-11-14 12:49:22.700 +05:30 [INF] HTTP GET /api/admin/notifications/events responded 200 in 70.0164 ms
+2026-11-14 12:49:22.718 +05:30 [INF] HTTP GET /api/admin/notifications/events responded 200 in 3.3969 ms
+2026-11-14 12:50:42.713 +05:30 [INF] HTTP GET /api/admin/notifications/rules responded 200 in 53.9163 ms
+2026-11-14 12:50:42.735 +05:30 [INF] HTTP GET /api/admin/notifications/rules responded 200 in 3.9839 ms
+2026-11-14 12:51:28.285 +05:30 [INF] HTTP GET /api/admin/settings responded 200 in 32.5390 ms
+2026-11-14 12:51:28.298 +05:30 [INF] HTTP GET /api/admin/settings responded 200 in 2.2185 ms
+2026-11-14 12:51:43.230 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 25.4709 ms
+2026-11-14 12:51:43.246 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 2.4136 ms
+2026-11-14 12:51:48.575 +05:30 [INF] HTTP GET /api/admin/bookings responded 200 in 17.1219 ms
+2026-11-14 12:52:02.045 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 5.8808 ms
+2026-11-14 12:52:04.154 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 13.4336 ms
+2026-11-14 12:52:04.169 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 2.8681 ms
+2026-11-14 12:52:24.190 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 26.4505 ms
+2026-11-14 12:52:28.159 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 20.2051 ms
+2026-11-14 12:52:30.172 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 21.5194 ms
+2026-11-14 12:52:44.559 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 3.3056 ms
+2026-11-14 12:53:04.560 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 2.1483 ms
+2026-11-14 12:53:24.565 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 9.9214 ms
+2026-11-14 12:53:44.564 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 2.8398 ms
+2026-11-14 12:54:04.556 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 2.4043 ms
+2026-11-14 12:54:38.620 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 17.4562 ms
+2026-11-14 12:55:14.831 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 28.4254 ms
+2026-11-14 12:55:38.566 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 12.7185 ms
+2026-11-14 12:55:47.485 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 1.8664 ms
+2026-11-14 12:56:00.667 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 3.3951 ms
+2026-11-14 12:56:19.662 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 336.3930 ms
+2026-11-14 12:56:19.727 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 3.8001 ms
+2026-11-14 12:56:19.742 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 2.4256 ms
+2026-11-14 12:56:19.764 +05:30 [INF] HTTP GET /api/bookings/me responded 200 in 39.6686 ms
+2026-11-14 12:56:19.779 +05:30 [INF] HTTP GET /api/bookings/me responded 200 in 1.8038 ms
+2026-11-14 12:56:39.028 +05:30 [INF] HTTP GET /api/bookings/me responded 200 in 16.8835 ms
+2026-11-14 12:56:39.038 +05:30 [INF] HTTP GET /api/bookings/me responded 200 in 1.3029 ms
+2026-11-14 12:56:39.047 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 35.5322 ms
+2026-11-14 12:56:39.058 +05:30 [INF] HTTP GET /api/fees/me responded 200 in 1.5941 ms
+2026-11-14 12:57:43.234 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 17.4376 ms
+2026-11-14 12:57:43.245 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 1.4090 ms
+2026-11-14 12:57:46.240 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 6.8442 ms
+2026-11-14 12:57:46.240 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 7.4001 ms
+2026-11-14 12:58:00.946 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 1.6686 ms
+2026-11-14 12:58:00.947 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 1.8128 ms
+2026-11-14 12:58:15.957 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 2.6526 ms
+2026-11-14 12:58:15.957 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 1.8331 ms
+2026-11-14 12:58:30.946 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 2.0192 ms
+2026-11-14 12:58:30.947 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 1.0431 ms
+2026-11-14 12:58:45.953 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 4.2556 ms
+2026-11-14 12:58:45.957 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 7.6584 ms
+2026-11-14 12:59:00.951 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 4.1634 ms
+2026-11-14 12:59:00.954 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 7.4264 ms
+2026-11-14 12:59:15.948 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 1.7729 ms
+2026-11-14 12:59:15.948 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 1.4703 ms
+2026-11-14 12:59:30.941 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 1.5282 ms
+2026-11-14 12:59:30.941 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 1.5642 ms
+2026-11-14 12:59:45.940 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 1.6947 ms
+2026-11-14 12:59:45.944 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 1.9923 ms
+2026-11-14 13:00:00.942 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 5.4413 ms
+2026-11-14 13:00:00.947 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 9.8701 ms
+2026-11-14 13:00:15.942 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 1.6867 ms
+2026-11-14 13:00:15.943 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 2.2855 ms
+2026-11-14 13:00:30.946 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 1.0936 ms
+2026-11-14 13:00:30.946 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 1.1001 ms
+2026-11-14 13:00:41.794 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 14.0013 ms
+2026-11-14 13:01:58.958 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 12.7972 ms
+2026-11-14 13:02:11.357 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 14.8898 ms
+2026-11-14 13:10:34.718 +05:30 [INF] Seeded admin user 1 with mobile 9999999999
+2026-11-14 13:10:34.893 +05:30 [INF] Notification dispatcher started, running every "00:00:10"
+2026-11-14 13:10:34.985 +05:30 [INF] Now listening on: http://localhost:5099
+2026-11-14 13:10:34.985 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-14 13:10:34.985 +05:30 [INF] Hosting environment: Development
+2026-11-14 13:10:34.986 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-11-14 13:10:36.195 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-11-14 13:10:36.248 +05:30 [INF] HTTP GET /api/health responded 200 in 68.6827 ms
+2026-11-14 13:10:37.352 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 251.7005 ms
+2026-11-14 13:10:37.416 +05:30 [INF] Section 1 'Boys Section' created
+2026-11-14 13:10:37.452 +05:30 [INF] HTTP POST /api/admin/sections responded 201 in 96.2996 ms
+2026-11-14 13:10:37.459 +05:30 [INF] Section 2 'Girls Section' created
+2026-11-14 13:10:37.461 +05:30 [INF] HTTP POST /api/admin/sections responded 201 in 6.4133 ms
+2026-11-14 13:10:37.556 +05:30 [INF] Generated 3 seats in section 1
+2026-11-14 13:10:37.614 +05:30 [INF] HTTP POST /api/admin/sections/1/seats/generate responded 200 in 150.6355 ms
+2026-11-14 13:10:37.627 +05:30 [INF] Generated 2 seats in section 2
+2026-11-14 13:10:37.628 +05:30 [INF] HTTP POST /api/admin/sections/2/seats/generate responded 200 in 12.4425 ms
+2026-11-14 13:10:37.815 +05:30 [INF] Admin 1 registered walk-in student 2
+2026-11-14 13:10:37.861 +05:30 [INF] HTTP POST /api/admin/students responded 201 in 230.5731 ms
+2026-11-14 13:10:37.877 +05:30 [INF] HTTP POST /api/admin/students responded 409 in 13.8388 ms
+2026-11-14 13:10:38.020 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 140.5423 ms
+2026-11-14 13:10:38.236 +05:30 [INF] HTTP POST /api/admin/students/2/assign-seat responded 400 in 66.4487 ms
+2026-11-14 13:10:38.309 +05:30 [INF] Admin 1 assigned seat 1 to student 2 from "2026-11-14" (booking 1, paid at desk: true)
+2026-11-14 13:10:38.327 +05:30 [INF] HTTP POST /api/admin/students/2/assign-seat responded 200 in 87.2559 ms
+2026-11-14 13:10:38.344 +05:30 [INF] HTTP POST /api/admin/students/2/assign-seat responded 409 in 15.2638 ms
+2026-11-14 13:10:38.387 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 41.5457 ms
+2026-11-14 13:10:38.426 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 36.8097 ms
+2026-11-14 13:10:38.737 +05:30 [INF] Admin 1 registered walk-in student 3
+2026-11-14 13:10:38.778 +05:30 [INF] HTTP POST /api/admin/students responded 201 in 194.7779 ms
+2026-11-14 13:10:38.793 +05:30 [INF] Admin 1 assigned seat 2 to student 3 from "2026-11-14" (booking 2, paid at desk: false)
+2026-11-14 13:10:38.795 +05:30 [INF] HTTP POST /api/admin/students/3/assign-seat responded 200 in 14.3210 ms
+2026-11-14 13:10:38.799 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 2.0651 ms
+2026-11-14 13:10:38.817 +05:30 [INF] HTTP GET /api/admin/students/2 responded 200 in 16.3382 ms
+2026-11-14 13:10:39.021 +05:30 [INF] Admin 1 added fee 3 for student 2: "2026-12-14".."2027-01-13", 1000, paid at desk: true
+2026-11-14 13:10:39.032 +05:30 [INF] HTTP POST /api/admin/fees responded 200 in 59.1145 ms
+2026-11-14 13:10:39.186 +05:30 [INF] HTTP POST /api/admin/fees responded 409 in 8.7175 ms
+2026-11-14 13:10:39.190 +05:30 [INF] HTTP POST /api/admin/fees responded 400 in 2.1191 ms
+2026-11-14 13:10:39.345 +05:30 [INF] Admin 1 registered walk-in student 4
+2026-11-14 13:10:39.348 +05:30 [INF] HTTP POST /api/admin/students responded 201 in 155.8247 ms
+2026-11-14 13:10:39.352 +05:30 [INF] HTTP POST /api/admin/fees responded 409 in 2.0861 ms
+2026-11-14 13:10:39.359 +05:30 [INF] Admin 1 added fee 5 for student 3: "2026-11-20".."2026-11-20", 150, paid at desk: false
+2026-11-14 13:10:39.360 +05:30 [INF] HTTP POST /api/admin/fees responded 200 in 5.1755 ms
+2026-11-14 13:10:39.722 +05:30 [INF] Admin 1 added fee 6 for student 2: "2027-02-14".."2027-03-13", 1000, paid at desk: true
+2026-11-14 13:10:39.723 +05:30 [INF] HTTP POST /api/admin/fees responded 200 in 5.8015 ms
+2026-11-14 13:10:44.925 +05:30 [INF] [MOCK "Sms"] #1 to 9876511111: Welcome to My Library, Walk In! Your account is ready. Log in with mobile 9876511111; the library will give you your password.
+2026-11-14 13:10:44.925 +05:30 [INF] [MOCK "WhatsApp"] #2 to 9876511111: Welcome to My Library, Walk In! Your account is ready. Log in with your mobile number 9876511111. Ask the library for your password.
+2026-11-14 13:10:44.925 +05:30 [INF] [MOCK "Email"] #3 to walkin@example.com | Welcome to My Library: Dear Walk In,<br/><br/>Your My Library account is ready. Log in with your mobile number <b>9876511111</b>. The library will give you your password.<br/><br/>Regards,<br/>My Library
+2026-11-14 13:10:44.925 +05:30 [INF] [MOCK "Sms"] #4 to 9876511111: Dear Walk In, seat B1 (Boys Section) at My Library is yours from 14 Nov 2026. Fee of Rs.1000 received. Next fee due 14 Dec 2026.
+2026-11-14 13:10:44.933 +05:30 [INF] [MOCK "WhatsApp"] #5 to 9876511111: Hello Walk In! Seat *B1* (Boys Section) at My Library is yours from 14 Nov 2026. Fee of Rs.1000 received. Next fee due on 14 Dec 2026.
+2026-11-14 13:10:44.934 +05:30 [INF] [MOCK "Email"] #6 to walkin@example.com | My Library: Seat B1 is yours: Dear Walk In,<br/><br/>Seat <b>B1</b> in Boys Section is yours from 14 Nov 2026.<br/>Fee of Rs.1000 received.<br/>Next fee due: 14 Dec 2026<br/><br/>Regards,<br/>My Library
+2026-11-14 13:10:44.934 +05:30 [INF] [MOCK "Sms"] #7 to 9876522222: Welcome to My Library, Pay Later! Your account is ready. Log in with mobile 9876522222; the library will give you your password.
+2026-11-14 13:10:44.934 +05:30 [INF] [MOCK "WhatsApp"] #8 to 9876522222: Welcome to My Library, Pay Later! Your account is ready. Log in with your mobile number 9876522222. Ask the library for your password.
+2026-11-14 13:10:44.935 +05:30 [INF] [MOCK "Sms"] #9 to 9876522222: Dear Pay Later, seat B2 (Boys Section) at My Library is yours from 14 Nov 2026. Fee of Rs.800 is due on 14 Nov 2026. Next fee due 14 Nov 2026.
+2026-11-14 13:10:44.935 +05:30 [INF] [MOCK "WhatsApp"] #10 to 9876522222: Hello Pay Later! Seat *B2* (Boys Section) at My Library is yours from 14 Nov 2026. Fee of Rs.800 is due on 14 Nov 2026. Next fee due on 14 Nov 2026.
+2026-11-14 13:10:44.936 +05:30 [INF] [MOCK "Sms"] #11 to 9876511111: Dear Walk In, we received Rs.1000 for 14 Dec 2026 to 13 Jan 2027. Thank you! - My Library
+2026-11-14 13:10:44.936 +05:30 [INF] [MOCK "WhatsApp"] #12 to 9876511111: Hello Walk In, payment of Rs.1000 received for 14 Dec 2026 to 13 Jan 2027. Thank you! - My Library
+2026-11-14 13:10:44.936 +05:30 [INF] [MOCK "Email"] #13 to walkin@example.com | My Library: Payment received: Dear Walk In,<br/><br/>We received your payment of Rs.1000 for seat B1, period 14 Dec 2026 to 13 Jan 2027.<br/>Next fee due: 14 Jan 2027<br/><br/>Thank you,<br/>My Library
+2026-11-14 13:10:44.936 +05:30 [INF] [MOCK "Sms"] #14 to 9876533333: Welcome to My Library, No Seat! Your account is ready. Log in with mobile 9876533333; the library will give you your password.
+2026-11-14 13:10:44.936 +05:30 [INF] [MOCK "WhatsApp"] #15 to 9876533333: Welcome to My Library, No Seat! Your account is ready. Log in with your mobile number 9876533333. Ask the library for your password.
+2026-11-14 13:10:44.937 +05:30 [INF] [MOCK "Sms"] #16 to 9876522222: Dear Pay Later, a fee of Rs.150 for 20 Nov 2026 to 20 Nov 2026 has been added. Please pay by 20 Nov 2026. - My Library
+2026-11-14 13:10:44.937 +05:30 [INF] [MOCK "WhatsApp"] #17 to 9876522222: Hello Pay Later, a fee of Rs.150 for 20 Nov 2026 to 20 Nov 2026 is due on 20 Nov 2026. - My Library
+2026-11-14 13:10:44.937 +05:30 [INF] [MOCK "WhatsApp"] #19 to 9876511111: Hello Walk In, payment of Rs.1000 received for 14 Feb 2027 to 13 Mar 2027. Thank you! - My Library
+2026-11-14 13:10:44.937 +05:30 [INF] [MOCK "Sms"] #18 to 9876511111: Dear Walk In, we received Rs.1000 for 14 Feb 2027 to 13 Mar 2027. Thank you! - My Library
+2026-11-14 13:10:44.938 +05:30 [INF] [MOCK "Email"] #20 to walkin@example.com | My Library: Payment received: Dear Walk In,<br/><br/>We received your payment of Rs.1000 for seat B1, period 14 Feb 2027 to 13 Mar 2027.<br/>Next fee due: 14 Jan 2027<br/><br/>Thank you,<br/>My Library
+2026-11-14 13:10:44.938 +05:30 [INF] Notification dispatcher processed 20 message(s)
+2026-11-14 13:13:36.381 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 177.3977 ms
+2026-11-14 13:13:36.397 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 12.6662 ms
+2026-11-14 13:13:36.604 +05:30 [INF] Admin 1 registered walk-in student 5
+2026-11-14 13:13:36.654 +05:30 [INF] HTTP POST /api/admin/students responded 201 in 254.5213 ms
+2026-11-14 13:13:36.712 +05:30 [INF] Admin 1 assigned seat 3 to student 5 from "2026-11-14" (booking 3, paid at desk: false)
+2026-11-14 13:13:36.743 +05:30 [INF] HTTP POST /api/admin/students/5/assign-seat responded 200 in 85.8775 ms
+2026-11-14 13:13:44.900 +05:30 [INF] [MOCK "Sms"] #23 to 9876544444: Dear Third One, seat B3 (Boys Section) at My Library is yours from 14 Nov 2026. Fee of Rs.1000 is due on 14 Nov 2026. Next fee due 14 Dec 2026.
+2026-11-14 13:13:44.900 +05:30 [INF] [MOCK "WhatsApp"] #22 to 9876544444: Welcome to My Library, Third One! Your account is ready. Log in with your mobile number 9876544444. Ask the library for your password.
+2026-11-14 13:13:44.900 +05:30 [INF] [MOCK "Sms"] #21 to 9876544444: Welcome to My Library, Third One! Your account is ready. Log in with mobile 9876544444; the library will give you your password.
+2026-11-14 13:13:44.900 +05:30 [INF] [MOCK "WhatsApp"] #24 to 9876544444: Hello Third One! Seat *B3* (Boys Section) at My Library is yours from 14 Nov 2026. Fee of Rs.1000 is due on 14 Nov 2026. Next fee due on 14 Dec 2026.
+2026-11-14 13:13:44.904 +05:30 [INF] Notification dispatcher processed 4 message(s)
+2026-11-14 13:20:06.730 +05:30 [INF] Notification dispatcher started, running every "00:01:00"
+2026-11-14 13:20:06.910 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-11-14 13:20:06.982 +05:30 [INF] Now listening on: https://localhost:7221
+2026-11-14 13:20:06.986 +05:30 [INF] Now listening on: http://localhost:5041
+2026-11-14 13:20:07.048 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-14 13:20:07.051 +05:30 [INF] Hosting environment: Development
+2026-11-14 13:20:07.052 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-11-14 13:20:07.984 +05:30 [INF] HTTP GET /swagger responded 301 in 9.8639 ms
+2026-11-14 13:20:08.135 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 120.1759 ms
+2026-11-14 13:20:08.154 +05:30 [INF] HTTP GET /swagger/index.js responded 200 in 3.7623 ms
+2026-11-14 13:20:08.212 +05:30 [INF] HTTP GET /swagger/index.css responded 200 in 61.9600 ms
+2026-11-14 13:20:08.255 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 104.7280 ms
+2026-11-14 13:20:08.255 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 104.7983 ms
+2026-11-14 13:20:08.267 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 117.1207 ms
+2026-11-14 13:20:09.219 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 181.1613 ms
+2026-11-14 13:20:31.745 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 261.2509 ms
+2026-11-14 13:20:35.539 +05:30 [INF] HTTP GET /api/admin/sections responded 401 in 17.9752 ms
+2026-11-14 13:20:35.558 +05:30 [INF] HTTP GET /api/admin/sections responded 401 in 3.3964 ms
+2026-11-14 13:20:35.675 +05:30 [INF] HTTP POST /api/auth/refresh responded 200 in 118.4245 ms
+2026-11-14 13:20:35.759 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 61.4068 ms
+2026-11-14 13:20:35.771 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 2.5657 ms
+2026-11-14 13:20:37.863 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 70.8470 ms
+2026-11-14 13:20:40.030 +05:30 [INF] HTTP GET /api/admin/bookings responded 200 in 43.7899 ms
+2026-11-14 13:20:41.895 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 22.7935 ms
+2026-11-14 13:20:41.908 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 1.9184 ms
+2026-11-14 13:20:43.782 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 21.5042 ms
+2026-11-14 13:45:13.673 +05:30 [INF] HTTP POST /api/admin/students responded 401 in 1.4576 ms
+2026-11-14 13:45:13.704 +05:30 [INF] HTTP POST /api/auth/refresh responded 200 in 10.3890 ms
+2026-11-14 13:45:14.115 +05:30 [INF] Admin 1 registered walk-in student 1003
+2026-11-14 13:45:14.236 +05:30 [INF] HTTP POST /api/admin/students responded 201 in 510.1809 ms
+2026-11-14 13:45:14.398 +05:30 [INF] HTTP GET /api/admin/students/1003 responded 200 in 26.4598 ms
+2026-11-14 13:45:14.422 +05:30 [INF] HTTP GET /api/admin/students/1003 responded 200 in 9.4184 ms
+2026-11-14 13:45:14.731 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 150.5819 ms
+2026-11-14 13:45:14.755 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 6.3908 ms
+2026-11-14 13:45:33.111 +05:30 [INF] Admin 1 assigned seat 2 to student 1003 from "2026-11-14" (booking 3, paid at desk: true)
+2026-11-14 13:45:33.130 +05:30 [INF] HTTP POST /api/admin/students/1003/assign-seat responded 200 in 93.3368 ms
+2026-11-14 13:45:33.190 +05:30 [INF] HTTP GET /api/admin/students/1003 responded 200 in 22.6993 ms
+2026-11-14 13:45:45.482 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 61.9734 ms
+2026-11-14 13:45:46.975 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 35.6901 ms
+2026-11-14 13:45:49.989 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 3.0310 ms
+2026-11-14 13:45:56.356 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 2.8232 ms
+2026-11-14 13:45:58.771 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 1.5575 ms
+2026-11-14 13:46:01.438 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 16.5582 ms
+2026-11-14 13:46:03.727 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 163.6241 ms
+2026-11-14 13:46:06.157 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 2.2343 ms
+2026-11-14 13:46:07.082 +05:30 [INF] [MOCK "Sms"] #1 to 8888888888: Welcome to Narendra Library, Lokesh kumar! Your account is ready. Log in with mobile 8888888888; the library will give you your password.
+2026-11-14 13:46:07.082 +05:30 [INF] [MOCK "Sms"] #4 to 8888888888: Dear Lokesh kumar, seat B2 (Boys Section) at Narendra Library is yours from 14 Nov 2026. Fee of Rs.500 received. Next fee due 14 Dec 2026.
+2026-11-14 13:46:07.082 +05:30 [INF] [MOCK "WhatsApp"] #2 to 8888888888: Welcome to Narendra Library, Lokesh kumar! Your account is ready. Log in with your mobile number 8888888888. Ask the library for your password.
+2026-11-14 13:46:07.082 +05:30 [INF] [MOCK "Email"] #3 to bsy2121221@gmail.com | Welcome to Narendra Library: Dear Lokesh kumar,<br/><br/>Your Narendra Library account is ready. Log in with your mobile number <b>8888888888</b>. The library will give you your password.<br/><br/>Regards,<br/>Narendra Library
+2026-11-14 13:46:07.100 +05:30 [INF] [MOCK "WhatsApp"] #5 to 8888888888: Hello Lokesh kumar! Seat *B2* (Boys Section) at Narendra Library is yours from 14 Nov 2026. Fee of Rs.500 received. Next fee due on 14 Dec 2026.
+2026-11-14 13:46:07.100 +05:30 [INF] [MOCK "Email"] #6 to bsy2121221@gmail.com | Narendra Library: Seat B2 is yours: Dear Lokesh kumar,<br/><br/>Seat <b>B2</b> in Boys Section is yours from 14 Nov 2026.<br/>Fee of Rs.500 received.<br/>Next fee due: 14 Dec 2026<br/><br/>Regards,<br/>Narendra Library
+2026-11-14 13:46:07.139 +05:30 [INF] Notification dispatcher processed 6 message(s)

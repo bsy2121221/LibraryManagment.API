@@ -1,4 +1,5 @@
--- Admin removes a student from their seat. The seat becomes free and unpaid invoices are cancelled.
+-- Admin removes a student from their seat. The seat becomes free, unpaid invoices are cancelled
+-- and the "seat released" messages are queued.
 -- Errors: 50404 not found, 50409 already closed
 CREATE PROCEDURE dbo.usp_Booking_Release
     @BookingId   INT,
@@ -10,7 +11,7 @@ BEGIN
     SET XACT_ABORT ON;
 
     DECLARE @Now DATETIME2(0) = SYSUTCDATETIME();
-    DECLARE @Status TINYINT, @UserId INT, @SeatId INT;
+    DECLARE @Status TINYINT, @UserId INT, @SeatId INT, @Data NVARCHAR(MAX);
 
     BEGIN TRANSACTION;
 
@@ -38,6 +39,16 @@ BEGIN
 
     INSERT INTO dbo.SeatChangeHistory (UserId, FromSeatId, ToSeatId, ChangedByUserId, Reason)
     VALUES (@UserId, @SeatId, NULL, @AdminUserId, @Reason);
+
+    -- Only students who had a seat (not just an unpaid hold) are told
+    IF @Status = 2
+    BEGIN
+        SET @Data = (SELECT st.SeatLabel AS Seat, sec.Name AS Section, @Reason AS Reason
+                     FROM dbo.Seats st JOIN dbo.Sections sec ON sec.Id = st.SectionId
+                     WHERE st.Id = @SeatId
+                     FOR JSON PATH, WITHOUT_ARRAY_WRAPPER);
+        EXEC dbo.usp_Notification_EnqueueEvent @UserId = @UserId, @EventType = 'SeatReleased', @DataJson = @Data;
+    END
 
     COMMIT TRANSACTION;
 END

@@ -111,6 +111,38 @@ namespace LibraryManagement.DataAccess.Repositories
             return rows.AsList();
         }
 
+        public async Task<int> AssignByAdminAsync(int userId, int seatId, DateOnly startDate, decimal amount, bool paidAtDesk, string? note,
+            int adminUserId, string currency, CancellationToken cancellationToken = default)
+        {
+            var parameters = new
+            {
+                UserId = userId,
+                SeatId = seatId,
+                StartDate = startDate,
+                Amount = amount,
+                PaidAtDesk = paidAtDesk,
+                Note = note,
+                AdminUserId = adminUserId,
+                Currency = currency
+            };
+
+            using var connection = _dbContext.CreateConnection();
+            try
+            {
+                return await connection.ExecuteScalarAsync<int>(new CommandDefinition(
+                    "dbo.usp_Booking_AssignByAdmin", parameters,
+                    commandType: CommandType.StoredProcedure, cancellationToken: cancellationToken));
+            }
+            catch (SqlException ex) when (ex.IsUniqueViolation())
+            {
+                throw new ConflictException(SeatTakenMessage);
+            }
+            catch (SqlException ex) when (ex.ToAppException() is { } appException)
+            {
+                throw appException;
+            }
+        }
+
         public async Task ReleaseAsync(int bookingId, int adminUserId, string reason, CancellationToken cancellationToken = default)
         {
             using var connection = _dbContext.CreateConnection();

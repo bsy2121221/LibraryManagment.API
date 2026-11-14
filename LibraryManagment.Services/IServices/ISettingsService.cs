@@ -9,9 +9,13 @@ namespace LibraryManagement.Services.IServices
         Task<string> GetLibraryNameAsync(CancellationToken cancellationToken = default);
         Task<decimal> GetMonthlyFeeAsync(CancellationToken cancellationToken = default);
         Task<int> GetSeatHoldMinutesAsync(CancellationToken cancellationToken = default);
+        Task<BillingSettings> GetBillingSettingsAsync(CancellationToken cancellationToken = default);
 
         // Admin
         Task<IReadOnlyList<AdminSettingDto>> GetAllForAdminAsync(CancellationToken cancellationToken = default);
         Task<IReadOnlyList<AdminSettingDto>> UpdateAsync(int adminUserId, IDictionary<string, string> values, CancellationToken cancellationToken = default);
     }
+
+    // Values the billing job uses (see SettingDefinitions for their meaning and limits)
+    public sealed record BillingSettings(decimal MonthlyFee, int InvoiceDaysBefore, int GraceDays, int AutoReleaseAfterOverdueDays);
 }

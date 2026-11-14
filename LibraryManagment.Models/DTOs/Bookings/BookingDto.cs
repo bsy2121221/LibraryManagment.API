@@ -19,7 +19,9 @@ namespace LibraryManagement.Models.DTOs.Bookings
         public int? HoldSecondsRemaining { get; set; }
 
         public DateOnly? StartDate { get; set; }
+        // Earliest unpaid fee's due date (or the next period's start when everything is paid)
         public DateOnly? NextDueDate { get; set; }
+        public bool HasOverdueFee { get; set; }
         public DateTime? ReleasedAt { get; set; }
         public string? ReleaseReason { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -43,6 +45,7 @@ namespace LibraryManagement.Models.DTOs.Bookings
                 : null,
             StartDate = b.StartDate,
             NextDueDate = b.NextDueDate,
+            HasOverdueFee = b.HasOverdueFee,
             ReleasedAt = b.ReleasedAt,
             ReleaseReason = b.ReleaseReason,
             CreatedAt = b.CreatedAt,

@@ -5,7 +5,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT Id, UserId, SeatId, Status, HoldExpiresAt, StartDate, NextDueDate, ReleasedAt, ReleaseReason, CreatedAt,
+    SELECT Id, UserId, SeatId, Status, HoldExpiresAt, StartDate, NextDueDate, HasOverdueFee, ReleasedAt, ReleaseReason, CreatedAt,
            SeatLabel, SectionId, SectionName, SectionGender, StudentName, StudentMobile, StudentEmail
     FROM dbo.vw_BookingDetails
     WHERE UserId = @UserId

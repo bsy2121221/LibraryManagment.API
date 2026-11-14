@@ -7,6 +7,9 @@ namespace LibraryManagement.Services.IServices
         // Creates a gateway order for the first month's fee of a held seat
         Task<PaymentOrderDto> CreateBookingOrderAsync(int userId, int bookingId, CancellationToken cancellationToken = default);
 
+        // Creates a gateway order for a monthly fee that is due or overdue
+        Task<PaymentOrderDto> CreateFeeOrderAsync(int userId, int invoiceId, CancellationToken cancellationToken = default);
+
         // Called by the browser after the checkout reports success
         Task<PaymentResultDto> VerifyAsync(int userId, VerifyPaymentRequest request, CancellationToken cancellationToken = default);
 

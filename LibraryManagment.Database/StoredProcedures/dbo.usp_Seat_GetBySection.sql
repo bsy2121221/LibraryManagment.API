@@ -13,7 +13,8 @@ BEGIN
            b.Status        AS BookingStatus,
            b.HoldExpiresAt,
            b.StartDate,
-           b.NextDueDate,
+           COALESCE((SELECT MIN(i.DueDate) FROM dbo.FeeInvoices i
+                     WHERE i.BookingId = b.Id AND i.Status IN (1, 3)), b.NextDueDate) AS NextDueDate,
            u.Id            AS StudentId,
            u.FullName      AS StudentName,
            u.Mobile        AS StudentMobile

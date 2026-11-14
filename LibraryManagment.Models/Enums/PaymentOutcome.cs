@@ -7,6 +7,9 @@ namespace LibraryManagement.Models.Enums
         AlreadyProcessed = 2,
 
         // Paid after the hold ended and someone else took the seat: refund needed
-        SeatLost = 3
+        SeatLost = 3,
+
+        // Paid a monthly fee that was already paid or cancelled: refund needed
+        InvoiceClosed = 4
     }
 }

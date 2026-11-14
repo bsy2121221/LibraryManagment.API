@@ -1,4 +1,5 @@
 using LibraryManagement.Models.DTOs.Bookings;
+using LibraryManagement.Models.DTOs.Fees;
 using LibraryManagement.Models.Entities;
 using LibraryManagement.Models.Enums;
 using System.ComponentModel.DataAnnotations;
@@ -72,6 +73,7 @@ namespace LibraryManagement.Models.DTOs.Students
         public BookingDto? CurrentBooking { get; set; }
         public List<SeatChangeDto> SeatHistory { get; set; } = [];
         public List<StudentPaymentDto> Payments { get; set; } = [];
+        public List<FeeInvoiceDto> Fees { get; set; } = [];
     }
 
     public class SeatChangeDto

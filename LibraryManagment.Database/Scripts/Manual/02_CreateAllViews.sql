@@ -18,3 +18,7 @@ DROP VIEW IF EXISTS dbo.vw_BookingDetails;
 GO
 :r $(DbProjectPath)\Views\dbo.vw_BookingDetails.sql
 GO
+DROP VIEW IF EXISTS dbo.vw_FeeInvoiceDetails;
+GO
+:r $(DbProjectPath)\Views\dbo.vw_FeeInvoiceDetails.sql
+GO

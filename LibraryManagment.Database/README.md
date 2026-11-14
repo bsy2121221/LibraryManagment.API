@@ -8,6 +8,8 @@ StoredProcedures/                one file per procedure: dbo.usp_<Entity>_<Actio
 Scripts/PostDeployment/          seed data (Settings, NotificationTemplates), safe to re-run
 Scripts/Manual/00_CreateAll.sql  creates everything on an empty database, in the right order
 Scripts/Manual/01_CreateAllProcedures.sql   drops and recreates every procedure
+Scripts/Manual/02_CreateAllViews.sql        drops and recreates every view (run before 01)
+Scripts/Manual/Upgrade/                     one-time scripts that bring an existing database up to a new step
 ```
 
 ## New database
@@ -25,3 +27,13 @@ Scripts/Manual/01_CreateAllProcedures.sql   drops and recreates every procedure
 ## Notes
 - Always keep `SET QUOTED_IDENTIFIER ON` when creating tables or procedures. Filtered indexes (e.g. on `dbo.Bookings`) require it.
 - Building the project (`dotnet build` or Visual Studio) validates every table, column and procedure reference and produces a `.dacpac`.
+
+## Upgrading an existing database
+Run the scripts in `Scripts/Manual/Upgrade/` that you have not run yet, in number order (SQLCMD Mode).
+Each one refuses to run twice. A new database does not need them: `00_CreateAll.sql` already has everything.
+
+## Messages to students (dbo.Notifications)
+Procedures that change something for a student (booking, payment, seat move/release, profile edit, password reset)
+add the messages to `dbo.Notifications` with Status = 1 (Ready) inside their own transaction.
+The API's background job sends Ready rows every minute and sets Status 3 (Sent) or 4 (Failed, after 3 attempts).
+Status: 1 Ready, 2 Processing, 3 Sent, 4 Failed, 5 Skipped, 6 Cancelled.

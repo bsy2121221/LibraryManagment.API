@@ -1,6 +1,7 @@
 using LibraryManagement.Models.Options;
 using LibraryManagement.Services.Background;
 using LibraryManagement.Services.IServices;
+using LibraryManagement.Services.Notifications;
 using LibraryManagement.Services.Payments;
 using LibraryManagement.Services.Services;
 using Microsoft.Extensions.Configuration;
@@ -29,11 +30,16 @@ namespace LibraryManagement.Services.Extensions
             services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IFeeService, FeeService>();
+            services.AddScoped<INotificationAdminService, NotificationAdminService>();
 
             services.AddPaymentGateway(configuration);
+            services.AddNotificationSenders(configuration);
 
             // Background jobs
             services.AddHostedService<HoldExpiryService>();
+            services.AddHostedService<BillingJobService>();
+            services.AddHostedService<NotificationDispatchService>();
 
             return services;
         }

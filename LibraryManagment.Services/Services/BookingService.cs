@@ -1,9 +1,12 @@
 using LibraryManagement.DataAccess.IRepositories;
 using LibraryManagement.Models.DTOs.Bookings;
+using LibraryManagement.Models.DTOs.Students;
 using LibraryManagement.Models.Enums;
 using LibraryManagement.Models.Exceptions;
+using LibraryManagement.Models.Options;
 using LibraryManagement.Services.IServices;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace LibraryManagement.Services.Services
 {
@@ -12,17 +15,20 @@ namespace LibraryManagement.Services.Services
         private readonly IBookingRepository _bookingRepository;
         private readonly ISettingsService _settingsService;
         private readonly TimeProvider _timeProvider;
+        private readonly PaymentOptions _paymentOptions;
         private readonly ILogger<BookingService> _logger;
 
         public BookingService(
             IBookingRepository bookingRepository,
             ISettingsService settingsService,
             TimeProvider timeProvider,
+            IOptions<PaymentOptions> paymentOptions,
             ILogger<BookingService> logger)
         {
             _bookingRepository = bookingRepository;
             _settingsService = settingsService;
             _timeProvider = timeProvider;
+            _paymentOptions = paymentOptions.Value;
             _logger = logger;
         }
 
@@ -55,6 +61,29 @@ namespace LibraryManagement.Services.Services
             var bookings = await _bookingRepository.GetAllForAdminAsync(status, search?.Trim(), cancellationToken);
             var now = UtcNow;
             return bookings.Select(b => BookingDto.FromEntity(b, now)).ToList();
+        }
+
+        public async Task<BookingDto> AssignSeatAsync(int adminUserId, int studentId, AssignSeatRequest request, CancellationToken cancellationToken = default)
+        {
+            var today = LibraryClock.Today(_timeProvider);
+            var startDate = request.StartDate ?? today;
+            if (startDate < today.AddYears(-1) || startDate > today.AddDays(60))
+            {
+                throw new BadRequestException("The start date must be within the last year and at most 60 days ahead.");
+            }
+
+            var amount = request.Amount ?? await _settingsService.GetMonthlyFeeAsync(cancellationToken);
+            var note = string.IsNullOrWhiteSpace(request.Note) ? null : request.Note.Trim();
+
+            var bookingId = await _bookingRepository.AssignByAdminAsync(studentId, request.SeatId, startDate, amount, request.PaidAtDesk,
+                note, adminUserId, _paymentOptions.Currency, cancellationToken);
+
+            _logger.LogInformation("Admin {AdminUserId} assigned seat {SeatId} to student {StudentId} from {StartDate} (booking {BookingId}, paid at desk: {Paid})",
+                adminUserId, request.SeatId, studentId, startDate, bookingId, request.PaidAtDesk);
+
+            var booking = await _bookingRepository.GetByIdAsync(bookingId, cancellationToken)
+                ?? throw new NotFoundException("Booking not found.");
+            return BookingDto.FromEntity(booking, UtcNow);
         }
 
         public async Task ReleaseAsync(int adminUserId, int bookingId, string reason, CancellationToken cancellationToken = default)

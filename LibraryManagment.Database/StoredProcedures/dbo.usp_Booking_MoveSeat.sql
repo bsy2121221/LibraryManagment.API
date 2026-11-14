@@ -1,4 +1,5 @@
--- Admin moves a student with an Active booking to another free seat in a section for their gender.
+-- Admin moves a student with an Active booking to another free seat in a section for their gender
+-- and queues the "seat moved" messages.
 -- Errors: 50400 invalid target, 50404 not found, 50409 not movable / seat taken
 CREATE PROCEDURE dbo.usp_Booking_MoveSeat
     @BookingId   INT,
@@ -12,7 +13,7 @@ BEGIN
 
     DECLARE @Now DATETIME2(0) = SYSUTCDATETIME();
     DECLARE @Status TINYINT, @UserId INT, @FromSeatId INT, @UserGender TINYINT, @SectionGender TINYINT;
-    DECLARE @Label NVARCHAR(20), @Message NVARCHAR(2048);
+    DECLARE @Label NVARCHAR(20), @Message NVARCHAR(2048), @Data NVARCHAR(MAX);
 
     BEGIN TRANSACTION;
 
@@ -58,6 +59,12 @@ BEGIN
 
     INSERT INTO dbo.SeatChangeHistory (UserId, FromSeatId, ToSeatId, ChangedByUserId, Reason)
     VALUES (@UserId, @FromSeatId, @ToSeatId, @AdminUserId, @Reason);
+
+    SET @Data = (SELECT fs.SeatLabel AS FromSeat, ts.SeatLabel AS ToSeat, ts.SeatLabel AS Seat, tsec.Name AS Section, @Reason AS Reason
+                 FROM dbo.Seats fs CROSS JOIN dbo.Seats ts JOIN dbo.Sections tsec ON tsec.Id = ts.SectionId
+                 WHERE fs.Id = @FromSeatId AND ts.Id = @ToSeatId
+                 FOR JSON PATH, WITHOUT_ARRAY_WRAPPER);
+    EXEC dbo.usp_Notification_EnqueueEvent @UserId = @UserId, @EventType = 'SeatMoved', @DataJson = @Data;
 
     COMMIT TRANSACTION;
 END

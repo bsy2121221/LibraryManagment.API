@@ -88,6 +88,31 @@ namespace LibraryManagement.DataAccess.Repositories
             return rows.AsList();
         }
 
+        public async Task<int> CreateByAdminAsync(User user, CancellationToken cancellationToken = default)
+        {
+            var parameters = new
+            {
+                user.FullName,
+                user.Mobile,
+                user.Email,
+                user.PasswordHash,
+                user.Gender,
+                user.Address
+            };
+
+            using var connection = _dbContext.CreateConnection();
+            try
+            {
+                return await connection.ExecuteScalarAsync<int>(new CommandDefinition(
+                    "dbo.usp_User_CreateByAdmin", parameters,
+                    commandType: CommandType.StoredProcedure, cancellationToken: cancellationToken));
+            }
+            catch (SqlException ex) when (ex.IsUniqueViolation())
+            {
+                throw new ConflictException("This mobile number is already registered.");
+            }
+        }
+
         public async Task UpdateProfileAsync(User user, CancellationToken cancellationToken = default)
         {
             var parameters = new

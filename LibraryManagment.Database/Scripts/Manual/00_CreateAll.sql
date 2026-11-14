@@ -33,7 +33,8 @@ PRINT 'Creating tables...';
 :r $(DbProjectPath)\Tables\dbo.NotificationTemplates.sql
 :r $(DbProjectPath)\Tables\dbo.NotificationRules.sql
 :r $(DbProjectPath)\Tables\dbo.NotificationRuleChannels.sql
-:r $(DbProjectPath)\Tables\dbo.NotificationLogs.sql
+:r $(DbProjectPath)\Tables\dbo.NotificationEventChannels.sql
+:r $(DbProjectPath)\Tables\dbo.Notifications.sql
 :r $(DbProjectPath)\Tables\dbo.MediaAssets.sql
 :r $(DbProjectPath)\Tables\dbo.HomePageLayouts.sql
 

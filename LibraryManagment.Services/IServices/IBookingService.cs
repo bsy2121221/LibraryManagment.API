@@ -1,4 +1,5 @@
 using LibraryManagement.Models.DTOs.Bookings;
+using LibraryManagement.Models.DTOs.Students;
 using LibraryManagement.Models.Enums;
 
 namespace LibraryManagement.Services.IServices
@@ -12,6 +13,7 @@ namespace LibraryManagement.Services.IServices
 
         // Admin
         Task<IReadOnlyList<BookingDto>> GetAllAsync(BookingStatus? status, string? search, CancellationToken cancellationToken = default);
+        Task<BookingDto> AssignSeatAsync(int adminUserId, int studentId, AssignSeatRequest request, CancellationToken cancellationToken = default);
         Task ReleaseAsync(int adminUserId, int bookingId, string reason, CancellationToken cancellationToken = default);
         Task<BookingDto> MoveSeatAsync(int adminUserId, int bookingId, MoveSeatRequest request, CancellationToken cancellationToken = default);
     }

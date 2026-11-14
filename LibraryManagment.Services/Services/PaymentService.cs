@@ -19,6 +19,7 @@ namespace LibraryManagement.Services.Services
         private readonly IPaymentRepository _paymentRepository;
         private readonly IBookingRepository _bookingRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IFeeRepository _feeRepository;
         private readonly ISettingsService _settingsService;
         private readonly PaymentOptions _options;
         private readonly TimeProvider _timeProvider;
@@ -29,6 +30,7 @@ namespace LibraryManagement.Services.Services
             IPaymentRepository paymentRepository,
             IBookingRepository bookingRepository,
             IUserRepository userRepository,
+            IFeeRepository feeRepository,
             ISettingsService settingsService,
             IOptions<PaymentOptions> options,
             TimeProvider timeProvider,
@@ -38,6 +40,7 @@ namespace LibraryManagement.Services.Services
             _paymentRepository = paymentRepository;
             _bookingRepository = bookingRepository;
             _userRepository = userRepository;
+            _feeRepository = feeRepository;
             _settingsService = settingsService;
             _options = options.Value;
             _timeProvider = timeProvider;
@@ -107,6 +110,65 @@ namespace LibraryManagement.Services.Services
             };
         }
 
+        public async Task<PaymentOrderDto> CreateFeeOrderAsync(int userId, int invoiceId, CancellationToken cancellationToken = default)
+        {
+            var invoice = await _feeRepository.GetByIdAsync(invoiceId, cancellationToken);
+            if (invoice is null || invoice.UserId != userId)
+            {
+                throw new NotFoundException("Fee not found.");
+            }
+            if (invoice.Status is not (InvoiceStatus.Due or InvoiceStatus.Overdue))
+            {
+                throw new ConflictException("This fee is already paid or was cancelled.");
+            }
+
+            var booking = await _bookingRepository.GetByIdAsync(invoice.BookingId, cancellationToken)
+                ?? throw new NotFoundException("Booking not found.");
+            var libraryName = await _settingsService.GetLibraryNameAsync(cancellationToken);
+            var amountInPaise = (long)Math.Round(invoice.Amount * 100, MidpointRounding.AwayFromZero);
+
+            var order = await _gateway.CreateOrderAsync(amountInPaise, _options.Currency, $"fee-{invoice.Id}",
+                new Dictionary<string, string>
+                {
+                    ["feeInvoiceId"] = invoice.Id.ToString(),
+                    ["seat"] = $"{invoice.SectionName} - {invoice.SeatLabel}"
+                },
+                cancellationToken);
+
+            await _paymentRepository.CreateAsync(new Payment
+            {
+                UserId = userId,
+                BookingId = invoice.BookingId,
+                FeeInvoiceId = invoice.Id,
+                Gateway = _gateway.Name,
+                GatewayOrderId = order.OrderId,
+                Amount = invoice.Amount,
+                Currency = order.Currency
+            }, cancellationToken);
+
+            _logger.LogInformation("Payment order {OrderId} ({Gateway}) created for fee {InvoiceId}, amount {Amount}",
+                order.OrderId, _gateway.Name, invoice.Id, invoice.Amount);
+
+            return new PaymentOrderDto
+            {
+                Provider = _gateway.Name,
+                KeyId = _gateway.PublicKey,
+                OrderId = order.OrderId,
+                AmountInPaise = order.AmountInPaise,
+                Amount = invoice.Amount,
+                Currency = order.Currency,
+                LibraryName = libraryName,
+                Description = $"Seat {invoice.SeatLabel} - fee {invoice.PeriodStart:dd MMM} to {invoice.PeriodEnd:dd MMM yyyy}",
+                Prefill = new PaymentPrefillDto
+                {
+                    Name = booking.StudentName,
+                    Contact = booking.StudentMobile,
+                    Email = booking.StudentEmail
+                },
+                Booking = BookingDto.FromEntity(booking, UtcNow)
+            };
+        }
+
         public async Task<PaymentResultDto> VerifyAsync(int userId, VerifyPaymentRequest request, CancellationToken cancellationToken = default)
         {
             var payment = await GetOwnPaymentAsync(userId, request.OrderId, cancellationToken);
@@ -125,9 +187,13 @@ namespace LibraryManagement.Services.Services
             return new PaymentResultDto
             {
                 Outcome = outcome,
-                Message = outcome == PaymentOutcome.SeatLost
-                    ? "Payment received, but your seat hold had ended and the seat was taken. The library will refund you."
-                    : "Payment successful. Your seat is booked!",
+                Message = outcome switch
+                {
+                    PaymentOutcome.SeatLost => "Payment received, but your seat hold had ended and the seat was taken. The library will refund you.",
+                    PaymentOutcome.InvoiceClosed => "Payment received, but this fee was already paid or cancelled. The library will refund you.",
+                    _ when payment.FeeInvoiceId is not null => "Payment successful. Thank you!",
+                    _ => "Payment successful. Your seat is booked!"
+                },
                 Booking = booking is null ? null : BookingDto.FromEntity(booking, UtcNow)
             };
         }
@@ -201,9 +267,9 @@ namespace LibraryManagement.Services.Services
 
         private void LogOutcome(PaymentOutcome outcome, string orderId, int bookingId)
         {
-            if (outcome == PaymentOutcome.SeatLost)
+            if (outcome is PaymentOutcome.SeatLost or PaymentOutcome.InvoiceClosed)
             {
-                _logger.LogWarning("Order {OrderId} was paid but booking {BookingId} lost its seat. REFUND REQUIRED.", orderId, bookingId);
+                _logger.LogWarning("Order {OrderId} (booking {BookingId}) was paid but could not be applied ({Outcome}). REFUND REQUIRED.", orderId, bookingId, outcome);
             }
             else
             {

@@ -25,6 +25,8 @@ namespace LibraryManagement.DataAccess.Extensions
             services.AddScoped<ISettingRepository, SettingRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
+            services.AddScoped<IFeeRepository, FeeRepository>();
 
             return services;
         }

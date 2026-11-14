@@ -17,6 +17,9 @@ namespace LibraryManagement.DataAccess.IRepositories
 
         // status null = live bookings (Active + Held)
         Task<IReadOnlyList<BookingDetails>> GetAllForAdminAsync(BookingStatus? status, string? search, CancellationToken cancellationToken = default);
+        // Admin gives a seat directly (walk-in). Returns the booking id.
+        Task<int> AssignByAdminAsync(int userId, int seatId, DateOnly startDate, decimal amount, bool paidAtDesk, string? note,
+            int adminUserId, string currency, CancellationToken cancellationToken = default);
         Task ReleaseAsync(int bookingId, int adminUserId, string reason, CancellationToken cancellationToken = default);
         Task<IReadOnlyList<SeatChangeEntry>> GetSeatHistoryByUserAsync(int userId, CancellationToken cancellationToken = default);
         Task MoveSeatAsync(int bookingId, int toSeatId, int adminUserId, string? reason, CancellationToken cancellationToken = default);
