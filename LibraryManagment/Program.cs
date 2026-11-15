@@ -25,10 +25,12 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 
-    //for production
+    var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+        ?? [];
+
     options.AddPolicy("ProductionPolicy", policy =>
     {
-        policy.WithOrigins("https://your-production-domain.com")
+        policy.WithOrigins(allowedOrigins)
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -76,13 +78,20 @@ if (!app.Environment.IsDevelopment()
 app.UseSerilogRequestLogging();
 app.UseExceptionHandler();
 
-if (app.Environment.IsDevelopment())
+var enableSwagger = app.Environment.IsDevelopment()
+    || app.Configuration.GetValue("Swagger:Enabled", false);
+
+if (enableSwagger)
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Library Management API v1");
     });
+}
+
+if (app.Environment.IsDevelopment())
+{
     app.UseCors("AllowAll");
 }
 else
