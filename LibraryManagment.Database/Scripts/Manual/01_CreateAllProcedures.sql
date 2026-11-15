@@ -271,3 +271,37 @@ DROP PROCEDURE IF EXISTS dbo.usp_FeeInvoice_CreateByAdmin;
 GO
 :r $(DbProjectPath)\StoredProcedures\dbo.usp_FeeInvoice_CreateByAdmin.sql
 GO
+
+-- Media library and home page builder
+DROP PROCEDURE IF EXISTS dbo.usp_MediaAsset_Create;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_MediaAsset_Create.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_MediaAsset_GetAll;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_MediaAsset_GetAll.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_MediaAsset_Delete;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_MediaAsset_Delete.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_HomePageLayout_Save;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_HomePageLayout_Save.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_HomePageLayout_Publish;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_HomePageLayout_Publish.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_HomePageLayout_GetPublished;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_HomePageLayout_GetPublished.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_HomePageLayout_GetById;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_HomePageLayout_GetById.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_HomePageLayout_GetHistory;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_HomePageLayout_GetHistory.sql
+GO

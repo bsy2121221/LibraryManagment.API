@@ -92,6 +92,8 @@ else
 
 app.UseHttpsRedirection();
 
+app.UseMediaFiles();
+
 app.UseAuthentication();
 app.UseAuthorization();
 

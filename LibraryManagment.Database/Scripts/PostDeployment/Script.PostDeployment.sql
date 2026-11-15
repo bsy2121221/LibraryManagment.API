@@ -20,6 +20,23 @@ FROM (VALUES
 ) AS s ([Key], [Value], DataType, Description)
 WHERE NOT EXISTS (SELECT 1 FROM dbo.Settings x WHERE x.[Key] = s.[Key]);
 
+-- Website footer details. The footer design is fixed; the admin only fills in these values (empty = hidden).
+INSERT INTO dbo.Settings ([Key], [Value], DataType, Description)
+SELECT s.[Key], s.[Value], s.DataType, s.Description
+FROM (VALUES
+    ('FooterAbout',       N'A calm, comfortable study library with your own fixed seat.', 'string', N'Short line about the library shown in the footer'),
+    ('LibraryAddress',    N'', 'string', N'Full address shown in the footer'),
+    ('ContactPhone',      N'', 'string', N'Phone number shown in the footer (click to call)'),
+    ('ContactEmail',      N'', 'string', N'Email address shown in the footer'),
+    ('WhatsAppNumber',    N'', 'string', N'WhatsApp number with country code, e.g. 919876543210'),
+    ('OpeningHours',      N'', 'string', N'e.g. Mon-Sun: 6:00 AM - 11:00 PM'),
+    ('GoogleMapsUrl',     N'', 'url',    N'Link to the library on Google Maps'),
+    ('InstagramUrl',      N'', 'url',    N'Instagram page link'),
+    ('FacebookUrl',       N'', 'url',    N'Facebook page link'),
+    ('YouTubeUrl',        N'', 'url',    N'YouTube channel link')
+) AS s ([Key], [Value], DataType, Description)
+WHERE NOT EXISTS (SELECT 1 FROM dbo.Settings x WHERE x.[Key] = s.[Key]);
+
 -- Notification templates. Placeholders: {Name}, {Amount}, {DueDate}, {LibraryName}
 INSERT INTO dbo.NotificationTemplates (Name, Channel, Subject, Body)
 SELECT t.Name, t.Channel, t.Subject, t.Body

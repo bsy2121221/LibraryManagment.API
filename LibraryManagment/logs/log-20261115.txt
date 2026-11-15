@@ -1,0 +1,63 @@
+2026-11-15 11:44:03.278 +05:30 [INF] Notification dispatcher started, running every "00:01:00"
+2026-11-15 11:44:03.532 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-11-15 11:44:22.424 +05:30 [INF] Notification dispatcher started, running every "00:01:00"
+2026-11-15 11:44:22.777 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-11-15 11:44:22.911 +05:30 [INF] Now listening on: https://localhost:7221
+2026-11-15 11:44:22.915 +05:30 [INF] Now listening on: http://localhost:5041
+2026-11-15 11:44:23.034 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-15 11:44:23.037 +05:30 [INF] Hosting environment: Development
+2026-11-15 11:44:23.038 +05:30 [INF] Content root path: C:\Users\bakumar\Documents\Project\LibraryManagment\LibraryManagment_API\LibraryManagment
+2026-11-15 11:44:24.257 +05:30 [INF] HTTP GET /swagger responded 301 in 15.4163 ms
+2026-11-15 11:44:24.480 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 173.0334 ms
+2026-11-15 11:44:24.518 +05:30 [INF] HTTP GET /swagger/index.js responded 200 in 4.7214 ms
+2026-11-15 11:44:24.567 +05:30 [INF] HTTP GET /swagger/index.css responded 200 in 56.4378 ms
+2026-11-15 11:44:24.626 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 114.8325 ms
+2026-11-15 11:44:24.626 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 112.8367 ms
+2026-11-15 11:44:24.646 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 134.5156 ms
+2026-11-15 11:44:25.502 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 172.9696 ms
+2026-11-15 11:44:43.662 +05:30 [INF] HTTP GET /api/home-page responded 204 in 289.3172 ms
+2026-11-15 11:44:43.685 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 312.2270 ms
+2026-11-15 11:44:43.698 +05:30 [INF] HTTP GET /api/home-page responded 204 in 8.7906 ms
+2026-11-15 11:45:03.611 +05:30 [INF] HTTP GET /api/admin/sections responded 401 in 15.2316 ms
+2026-11-15 11:45:03.631 +05:30 [INF] HTTP GET /api/admin/sections responded 401 in 1.9852 ms
+2026-11-15 11:45:03.738 +05:30 [INF] HTTP POST /api/auth/refresh responded 200 in 106.8888 ms
+2026-11-15 11:45:03.815 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 56.3342 ms
+2026-11-15 11:45:03.825 +05:30 [INF] HTTP GET /api/admin/sections responded 200 in 2.0509 ms
+2026-11-15 11:45:06.312 +05:30 [INF] HTTP GET /api/admin/home-page responded 200 in 28.3351 ms
+2026-11-15 11:45:06.325 +05:30 [INF] HTTP GET /api/admin/home-page responded 200 in 2.3758 ms
+2026-11-15 11:48:19.327 +05:30 [INF] HTTP GET /api/admin/media responded 200 in 44.6936 ms
+2026-11-15 11:51:47.215 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 7.1567 ms
+2026-11-15 11:51:47.228 +05:30 [INF] HTTP GET /api/admin/home-page responded 200 in 19.3709 ms
+2026-11-15 11:51:47.234 +05:30 [INF] HTTP POST /api/admin/media responded 400 in 199997.3301 ms
+2026-11-15 11:51:47.250 +05:30 [INF] HTTP GET /api/admin/notifications/summary responded 200 in 43.1455 ms
+2026-11-15 11:51:47.252 +05:30 [INF] HTTP GET /api/admin/home-page responded 200 in 18.3878 ms
+2026-11-15 11:51:47.270 +05:30 [INF] HTTP GET /api/admin/notifications responded 200 in 62.9884 ms
+2026-11-15 11:51:47.275 +05:30 [INF] HTTP GET /api/admin/fees responded 200 in 66.0500 ms
+2026-11-15 11:51:47.296 +05:30 [INF] HTTP GET /api/admin/bookings responded 200 in 52.2687 ms
+2026-11-15 11:51:47.297 +05:30 [INF] HTTP GET /api/admin/students responded 200 in 87.2527 ms
+2026-11-15 11:51:50.008 +05:30 [INF] HTTP GET /api/admin/home-page responded 200 in 6.3956 ms
+2026-11-15 11:51:50.020 +05:30 [INF] HTTP GET /api/admin/home-page responded 200 in 1.8590 ms
+2026-11-15 11:51:52.959 +05:30 [INF] HTTP GET /api/admin/media responded 200 in 6.1478 ms
+2026-11-15 11:52:35.450 +05:30 [INF] HTTP GET /api/admin/media responded 200 in 5.2395 ms
+2026-11-15 11:52:40.828 +05:30 [INF] Admin 1 uploaded image 593b425687404d50877a1d2a2b29b2ca.jpg (614618 bytes)
+2026-11-15 11:52:40.837 +05:30 [INF] HTTP POST /api/admin/media responded 200 in 45.0184 ms
+2026-11-15 11:52:40.884 +05:30 [INF] HTTP GET /uploads/593b425687404d50877a1d2a2b29b2ca.jpg responded 200 in 21.7522 ms
+2026-11-15 11:52:55.695 +05:30 [INF] HTTP GET /api/admin/media responded 200 in 8.5816 ms
+2026-11-15 11:53:10.168 +05:30 [INF] Admin 1 saved home page version 1 (published: true)
+2026-11-15 11:53:10.178 +05:30 [INF] HTTP POST /api/admin/home-page responded 200 in 38.7536 ms
+2026-11-15 11:53:15.117 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 1.7519 ms
+2026-11-15 11:53:15.141 +05:30 [INF] HTTP GET /api/home-page responded 200 in 15.7914 ms
+2026-11-15 11:53:15.154 +05:30 [INF] HTTP GET /api/home-page responded 200 in 1.8399 ms
+2026-11-15 11:56:25.477 +05:30 [INF] HTTP GET /api/admin/media responded 200 in 4.4975 ms
+2026-11-15 11:56:31.517 +05:30 [INF] Admin 1 uploaded image 76cfd10e6a1f49909815554c9115c599.jpg (91852 bytes)
+2026-11-15 11:56:31.522 +05:30 [INF] HTTP POST /api/admin/media responded 200 in 18.3267 ms
+2026-11-15 11:56:31.551 +05:30 [INF] HTTP GET /uploads/76cfd10e6a1f49909815554c9115c599.jpg responded 200 in 1.5715 ms
+2026-11-15 11:56:40.408 +05:30 [INF] Admin 1 saved home page version 2 (published: true)
+2026-11-15 11:56:40.412 +05:30 [INF] HTTP POST /api/admin/home-page responded 200 in 12.2815 ms
+2026-11-15 11:56:46.965 +05:30 [INF] HTTP GET /api/settings/public responded 200 in 8.0504 ms
+2026-11-15 11:56:46.977 +05:30 [INF] HTTP GET /api/home-page responded 200 in 10.8975 ms
+2026-11-15 11:56:46.992 +05:30 [INF] HTTP GET /api/home-page responded 200 in 2.1073 ms
+2026-11-15 11:57:14.201 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 42.9084 ms
+2026-11-15 11:57:14.213 +05:30 [INF] HTTP GET /api/seat-map responded 200 in 2.6797 ms
+2026-11-15 11:57:20.307 +05:30 [INF] HTTP GET /api/home-page responded 200 in 1.9365 ms
+2026-11-15 11:57:20.317 +05:30 [INF] HTTP GET /api/home-page responded 200 in 1.5993 ms

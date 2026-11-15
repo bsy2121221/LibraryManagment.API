@@ -27,6 +27,8 @@ namespace LibraryManagement.DataAccess.Extensions
             services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
             services.AddScoped<IFeeRepository, FeeRepository>();
+            services.AddScoped<IHomePageRepository, HomePageRepository>();
+            services.AddScoped<IMediaRepository, MediaRepository>();
 
             return services;
         }

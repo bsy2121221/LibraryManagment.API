@@ -1,6 +1,7 @@
 using LibraryManagement.Models.Options;
 using LibraryManagement.Services.Background;
 using LibraryManagement.Services.IServices;
+using LibraryManagement.Services.Media;
 using LibraryManagement.Services.Notifications;
 using LibraryManagement.Services.Payments;
 using LibraryManagement.Services.Services;
@@ -32,9 +33,12 @@ namespace LibraryManagement.Services.Extensions
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IFeeService, FeeService>();
             services.AddScoped<INotificationAdminService, NotificationAdminService>();
+            services.AddScoped<IHomePageService, HomePageService>();
+            services.AddScoped<IMediaService, MediaService>();
 
             services.AddPaymentGateway(configuration);
             services.AddNotificationSenders(configuration);
+            services.AddMediaStorage(configuration);
 
             // Background jobs
             services.AddHostedService<HoldExpiryService>();
@@ -42,6 +46,26 @@ namespace LibraryManagement.Services.Extensions
             services.AddHostedService<NotificationDispatchService>();
 
             return services;
+        }
+
+        // Picks where uploaded images are stored from "Storage:Provider"
+        private static void AddMediaStorage(this IServiceCollection services, IConfiguration configuration)
+        {
+            var options = configuration.GetSection(StorageOptions.SectionName).Get<StorageOptions>() ?? new StorageOptions();
+
+            switch (options.Provider.Trim().ToLowerInvariant())
+            {
+                case "local":
+                    services.AddSingleton<IMediaStorage, LocalMediaStorage>();
+                    break;
+
+                case "azureblob":
+                    throw new InvalidOperationException(
+                        "Storage:Provider 'AzureBlob' is not implemented yet. Use 'Local' (images are kept on the API server).");
+
+                default:
+                    throw new InvalidOperationException($"Unknown Storage:Provider '{options.Provider}'. Use 'Local'.");
+            }
         }
 
         // Picks the payment provider from "Payment:Provider". Switching to Razorpay needs only config changes.

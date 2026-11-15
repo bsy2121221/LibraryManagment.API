@@ -37,9 +37,25 @@ namespace LibraryManagement.Services.Services
                 LibraryName = LibraryName(settings),
                 MonthlyFee = MonthlyFee(settings),
                 SeatHoldMinutes = SeatHoldMinutes(settings),
-                Currency = _paymentOptions.Currency
+                Currency = _paymentOptions.Currency,
+                Footer = new FooterDto
+                {
+                    About = Text(settings, SettingKeys.FooterAbout),
+                    Address = Text(settings, SettingKeys.LibraryAddress),
+                    Phone = Text(settings, SettingKeys.ContactPhone),
+                    Email = Text(settings, SettingKeys.ContactEmail),
+                    WhatsAppNumber = Text(settings, SettingKeys.WhatsAppNumber),
+                    OpeningHours = Text(settings, SettingKeys.OpeningHours),
+                    GoogleMapsUrl = Text(settings, SettingKeys.GoogleMapsUrl),
+                    InstagramUrl = Text(settings, SettingKeys.InstagramUrl),
+                    FacebookUrl = Text(settings, SettingKeys.FacebookUrl),
+                    YouTubeUrl = Text(settings, SettingKeys.YouTubeUrl)
+                }
             };
         }
+
+        private static string Text(Dictionary<string, string> s, string key)
+            => s.TryGetValue(key, out var value) ? value.Trim() : string.Empty;
 
         public async Task<string> GetLibraryNameAsync(CancellationToken cancellationToken = default)
             => LibraryName(await LoadAsync(cancellationToken));

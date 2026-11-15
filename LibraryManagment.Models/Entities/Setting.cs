@@ -19,5 +19,17 @@ namespace LibraryManagement.Models.Entities
         public const string InvoiceGenerationDaysBefore = "InvoiceGenerationDaysBefore";
         public const string GraceDays = "GraceDays";
         public const string AutoReleaseAfterOverdueDays = "AutoReleaseAfterOverdueDays";
+
+        // Website footer (fixed design, only these values are editable)
+        public const string FooterAbout = "FooterAbout";
+        public const string LibraryAddress = "LibraryAddress";
+        public const string ContactPhone = "ContactPhone";
+        public const string ContactEmail = "ContactEmail";
+        public const string WhatsAppNumber = "WhatsAppNumber";
+        public const string OpeningHours = "OpeningHours";
+        public const string GoogleMapsUrl = "GoogleMapsUrl";
+        public const string InstagramUrl = "InstagramUrl";
+        public const string FacebookUrl = "FacebookUrl";
+        public const string YouTubeUrl = "YouTubeUrl";
     }
 }

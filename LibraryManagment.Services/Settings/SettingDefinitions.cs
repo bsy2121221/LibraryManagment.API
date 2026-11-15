@@ -12,6 +12,7 @@ namespace LibraryManagement.Services.Settings
         public const string General = "General";
         public const string FeesAndBooking = "Fees & booking";
         public const string Billing = "Billing & overdue";
+        public const string Footer = "Website footer";
 
         public static readonly IReadOnlyList<SettingDefinition> All =
         [
@@ -21,6 +22,16 @@ namespace LibraryManagement.Services.Settings
             new(SettingKeys.InvoiceGenerationDaysBefore, "Create next month's fee this many days before the due date", Billing, "int", 0, 28),
             new(SettingKeys.GraceDays, "Grace days after the due date before a fee is overdue", Billing, "int", 0, 30),
             new(SettingKeys.AutoReleaseAfterOverdueDays, "Release the seat automatically after this many overdue days (0 = never)", Billing, "int", 0, 365),
+            new(SettingKeys.FooterAbout, "About the library (one line)", Footer, "string", 0, 200),
+            new(SettingKeys.LibraryAddress, "Address", Footer, "string", 0, 300),
+            new(SettingKeys.ContactPhone, "Phone", Footer, "string", 0, 20),
+            new(SettingKeys.ContactEmail, "Email", Footer, "email", 0, 100),
+            new(SettingKeys.WhatsAppNumber, "WhatsApp number (with country code)", Footer, "string", 0, 15),
+            new(SettingKeys.OpeningHours, "Opening hours", Footer, "string", 0, 100),
+            new(SettingKeys.GoogleMapsUrl, "Google Maps link", Footer, "url", 0, 500),
+            new(SettingKeys.InstagramUrl, "Instagram link", Footer, "url", 0, 300),
+            new(SettingKeys.FacebookUrl, "Facebook link", Footer, "url", 0, 300),
+            new(SettingKeys.YouTubeUrl, "YouTube link", Footer, "url", 0, 300),
         ];
 
         private static readonly Dictionary<string, SettingDefinition> ByKey =
@@ -68,14 +79,30 @@ namespace LibraryManagement.Services.Settings
                         return (null, $"{definition.Label} must be true or false.");
                     return (b ? "true" : "false", null);
 
+                case "url":
+                    if (value.Length > 0
+                        && !(Uri.TryCreate(value, UriKind.Absolute, out var uri) && (uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeHttp)))
+                        return (null, $"{definition.Label} must be a full link starting with https://");
+                    return LengthCheck(definition, value);
+
+                case "email":
+                    if (value.Length > 0 && !System.Net.Mail.MailAddress.TryCreate(value, out _))
+                        return (null, $"{definition.Label} is not a valid email address.");
+                    return LengthCheck(definition, value);
+
                 default:
-                    // For text, Min/Max are lengths
-                    if (definition.Min is { } min && value.Length < min)
-                        return (null, $"{definition.Label} must be at least {min} characters.");
-                    if (definition.Max is { } max && value.Length > max)
-                        return (null, $"{definition.Label} must be at most {max} characters.");
-                    return (value, null);
+                    return LengthCheck(definition, value);
             }
+        }
+
+        // For text, Min/Max are lengths
+        private static (string? Value, string? Error) LengthCheck(SettingDefinition definition, string value)
+        {
+            if (definition.Min is { } min && value.Length < min)
+                return (null, $"{definition.Label} must be at least {min} characters.");
+            if (definition.Max is { } max && value.Length > max)
+                return (null, $"{definition.Label} must be at most {max} characters.");
+            return (value, null);
         }
 
         private static bool OutOfRange(decimal value, SettingDefinition d) =>
