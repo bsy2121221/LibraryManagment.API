@@ -46,6 +46,13 @@ namespace LibraryManagement.Models.Options
         public string AccessToken { get; set; } = string.Empty;
         public string PhoneNumberId { get; set; } = string.Empty;
         public string ApiVersion { get; set; } = "v21.0";
+
+        // Approved template in Meta Business Manager (required to message students who have not replied).
+        // Create a UTILITY template whose body has one variable {{1}} for the rendered message text.
+        public string TemplateName { get; set; } = string.Empty;
+
+        // Language code of that template, e.g. "en" or "en_US" (must match Meta exactly)
+        public string TemplateLanguage { get; set; } = "en";
     }
 
     // "Mock" | "Smtp"

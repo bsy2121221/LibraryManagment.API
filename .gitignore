@@ -14,3 +14,16 @@ obj/
 
 # IDE
 .idea/
+
+# Logs
+**/logs/
+*.log
+
+# Publish profiles
+**/Properties/PublishProfiles/
+
+# User uploads
+**/wwwroot/uploads/
+
+# Local configuration
+appsettings.Development.json

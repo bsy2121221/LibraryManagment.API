@@ -35,6 +35,8 @@ namespace LibraryManagement.Services.Notifications
                 {
                     Require(options.WhatsApp.Meta.AccessToken, "Notifications:WhatsApp:Meta:AccessToken");
                     Require(options.WhatsApp.Meta.PhoneNumberId, "Notifications:WhatsApp:Meta:PhoneNumberId");
+                    // TemplateName is required so messages go out without the student having to reply first
+                    Require(options.WhatsApp.Meta.TemplateName, "Notifications:WhatsApp:Meta:TemplateName");
                     s.AddHttpClient<MetaWhatsAppSender>(c => c.Timeout = TimeSpan.FromSeconds(30));
                     s.AddTransient<INotificationSender>(sp => sp.GetRequiredService<MetaWhatsAppSender>());
                 }

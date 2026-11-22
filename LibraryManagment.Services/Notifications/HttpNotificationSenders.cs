@@ -85,8 +85,8 @@ namespace LibraryManagement.Services.Notifications
     }
 
     // "Notifications:WhatsApp:Provider": "Meta" - WhatsApp Cloud API.
-    // Free-text messages are only delivered within 24 hours of the student's last message to you; for other
-    // messages Meta requires an approved template. Test with your Meta test number first.
+    // Uses an approved UTILITY template (Meta:TemplateName) so students get messages even if they never
+    // replied. Free-text is only used when TemplateName is blank (and only works inside Meta's 24h window).
     public class MetaWhatsAppSender : INotificationSender
     {
         private readonly HttpClient _httpClient;
@@ -105,13 +105,11 @@ namespace LibraryManagement.Services.Notifications
         public async Task<string?> SendAsync(OutgoingMessage message, CancellationToken cancellationToken = default)
         {
             var meta = _options.WhatsApp.Meta;
-            var payload = new
-            {
-                messaging_product = "whatsapp",
-                to = PhoneNumbers.WithCountryCode(message.Recipient, _options.DefaultCountryCode),
-                type = "text",
-                text = new { preview_url = false, body = message.Body }
-            };
+            var to = PhoneNumbers.WithCountryCode(message.Recipient, _options.DefaultCountryCode);
+
+            object payload = string.IsNullOrWhiteSpace(meta.TemplateName)
+                ? BuildFreeTextPayload(to, message.Body)
+                : BuildTemplatePayload(to, meta, message.Body);
 
             using var request = new HttpRequestMessage(HttpMethod.Post,
                 $"https://graph.facebook.com/{meta.ApiVersion}/{meta.PhoneNumberId}/messages")
@@ -124,6 +122,54 @@ namespace LibraryManagement.Services.Notifications
             return result.RootElement.TryGetProperty("messages", out var messages) && messages.GetArrayLength() > 0
                 ? messages[0].GetProperty("id").GetString()
                 : null;
+        }
+
+        private static object BuildFreeTextPayload(string to, string body) => new
+        {
+            messaging_product = "whatsapp",
+            to,
+            type = "text",
+            text = new { preview_url = false, body }
+        };
+
+        // Template body must contain exactly one variable {{1}} filled with the rendered library message.
+        private static object BuildTemplatePayload(string to, MetaWhatsAppOptions meta, string body) => new
+        {
+            messaging_product = "whatsapp",
+            to,
+            type = "template",
+            template = new
+            {
+                name = meta.TemplateName.Trim(),
+                language = new { code = string.IsNullOrWhiteSpace(meta.TemplateLanguage) ? "en" : meta.TemplateLanguage.Trim() },
+                components = new object[]
+                {
+                    new
+                    {
+                        type = "body",
+                        parameters = new object[]
+                        {
+                            new { type = "text", text = ToTemplateParameter(body) }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Meta rejects empty params, leading/trailing spaces, and newlines inside variables.
+        private static string ToTemplateParameter(string value)
+        {
+            var cleaned = string.Join(' ', value
+                .Replace('\r', ' ')
+                .Replace('\n', ' ')
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries));
+
+            if (cleaned.Length == 0)
+            {
+                throw new NotificationSendException("WhatsApp template message body is empty.", permanent: true);
+            }
+
+            return cleaned.Length <= 1024 ? cleaned : cleaned[..1024];
         }
     }
 
