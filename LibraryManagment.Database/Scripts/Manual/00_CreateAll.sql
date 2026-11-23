@@ -37,6 +37,7 @@ PRINT 'Creating tables...';
 :r $(DbProjectPath)\Tables\dbo.Notifications.sql
 :r $(DbProjectPath)\Tables\dbo.MediaAssets.sql
 :r $(DbProjectPath)\Tables\dbo.HomePageLayouts.sql
+:r $(DbProjectPath)\Tables\dbo.SiteNotices.sql
 
 PRINT 'Creating views...';
 :r $(DbProjectPath)\Scripts\Manual\02_CreateAllViews.sql

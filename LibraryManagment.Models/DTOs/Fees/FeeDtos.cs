@@ -45,6 +45,20 @@ namespace LibraryManagement.Models.DTOs.Fees
         };
     }
 
+    // Important popup shown to a student after login while they have an overdue fee
+    public class OverdueNoticeDto
+    {
+        public string Title { get; set; } = string.Empty;
+
+        // Admin text with {Placeholders} already filled in (plain text, line breaks kept)
+        public string Message { get; set; } = string.Empty;
+
+        public decimal TotalAmount { get; set; }
+
+        // The overdue fees, oldest first, each payable with the normal fee payment-order flow
+        public IReadOnlyList<FeeInvoiceDto> Fees { get; set; } = [];
+    }
+
     public class MarkFeePaidRequest
     {
         [StringLength(500)]

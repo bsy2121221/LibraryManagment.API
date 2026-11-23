@@ -305,3 +305,19 @@ DROP PROCEDURE IF EXISTS dbo.usp_HomePageLayout_GetHistory;
 GO
 :r $(DbProjectPath)\StoredProcedures\dbo.usp_HomePageLayout_GetHistory.sql
 GO
+DROP PROCEDURE IF EXISTS dbo.usp_SiteNotice_GetAll;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_SiteNotice_GetAll.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_SiteNotice_GetCurrent;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_SiteNotice_GetCurrent.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_SiteNotice_Save;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_SiteNotice_Save.sql
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_SiteNotice_Delete;
+GO
+:r $(DbProjectPath)\StoredProcedures\dbo.usp_SiteNotice_Delete.sql
+GO

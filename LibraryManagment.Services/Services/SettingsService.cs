@@ -17,6 +17,7 @@ namespace LibraryManagement.Services.Services
         private const string DefaultLibraryName = "My Library";
         private const decimal DefaultMonthlyFee = 1000m;
         private const int DefaultSeatHoldMinutes = 7;
+        private const string DefaultOverdueNoticeTitle = "Important: fee overdue";
 
         private readonly ISettingRepository _settingRepository;
         private readonly PaymentOptions _paymentOptions;
@@ -74,6 +75,13 @@ namespace LibraryManagement.Services.Services
                 IntSetting(settings, SettingKeys.InvoiceGenerationDaysBefore, 5, 0, 28),
                 IntSetting(settings, SettingKeys.GraceDays, 3, 0, 30),
                 IntSetting(settings, SettingKeys.AutoReleaseAfterOverdueDays, 0, 0, 365));
+        }
+
+        public async Task<(string LibraryName, string Title, string Message)> GetOverdueNoticeAsync(CancellationToken cancellationToken = default)
+        {
+            var settings = await LoadAsync(cancellationToken);
+            var title = Text(settings, SettingKeys.OverdueNoticeTitle);
+            return (LibraryName(settings), title.Length > 0 ? title : DefaultOverdueNoticeTitle, Text(settings, SettingKeys.OverdueNoticeMessage));
         }
 
         private static int IntSetting(Dictionary<string, string> s, string key, int fallback, int min, int max)

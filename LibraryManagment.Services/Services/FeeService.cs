@@ -5,7 +5,9 @@ using LibraryManagement.Models.Exceptions;
 using LibraryManagement.Models.Options;
 using LibraryManagement.Services.IServices;
 using Microsoft.Extensions.Logging;
+using LibraryManagement.Services.Notifications;
 using Microsoft.Extensions.Options;
+using System.Globalization;
 
 namespace LibraryManagement.Services.Services
 {
@@ -40,6 +42,47 @@ namespace LibraryManagement.Services.Services
         {
             var fees = await _feeRepository.GetByUserAsync(userId, cancellationToken);
             return fees.Select(FeeInvoiceDto.FromEntity).ToList();
+        }
+
+        public async Task<OverdueNoticeDto?> GetMyOverdueNoticeAsync(int userId, CancellationToken cancellationToken = default)
+        {
+            var overdue = (await _feeRepository.GetByUserAsync(userId, cancellationToken))
+                .Where(f => f.Status == InvoiceStatus.Overdue)
+                .OrderBy(f => f.DueDate)
+                .Select(FeeInvoiceDto.FromEntity)
+                .ToList();
+            if (overdue.Count == 0)
+            {
+                return null;
+            }
+
+            var (libraryName, title, message) = await _settingsService.GetOverdueNoticeAsync(cancellationToken);
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                return null;
+            }
+
+            var oldest = overdue[0];
+            var total = overdue.Sum(f => f.Amount);
+            var values = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["Name"] = oldest.StudentName,
+                ["LibraryName"] = libraryName,
+                ["Amount"] = total.ToString("0.##", CultureInfo.InvariantCulture),
+                ["DueDate"] = oldest.DueDate.ToString("dd MMM yyyy", CultureInfo.InvariantCulture),
+                ["DaysOverdue"] = Math.Max(0, LibraryClock.Today(_timeProvider).DayNumber - oldest.DueDate.DayNumber).ToString(CultureInfo.InvariantCulture),
+                ["Count"] = overdue.Count.ToString(CultureInfo.InvariantCulture),
+                ["Seat"] = oldest.SeatLabel,
+                ["Section"] = oldest.SectionName
+            };
+
+            return new OverdueNoticeDto
+            {
+                Title = TemplateRenderer.Render(title, values),
+                Message = TemplateRenderer.Render(message, values),
+                TotalAmount = total,
+                Fees = overdue
+            };
         }
 
         public async Task<IReadOnlyList<FeeInvoiceDto>> GetAllAsync(InvoiceStatus? status, string? search, CancellationToken cancellationToken = default)

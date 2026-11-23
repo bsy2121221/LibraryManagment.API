@@ -37,6 +37,18 @@ FROM (VALUES
 ) AS s ([Key], [Value], DataType, Description)
 WHERE NOT EXISTS (SELECT 1 FROM dbo.Settings x WHERE x.[Key] = s.[Key]);
 
+-- Important popup shown to a student with an overdue fee right after login (with a Pay now button).
+-- Placeholders: {Name} {Amount} (total overdue) {DueDate} (oldest) {DaysOverdue} {Count} {Seat} {Section} {LibraryName}
+-- Empty message = no popup.
+INSERT INTO dbo.Settings ([Key], [Value], DataType, Description)
+SELECT s.[Key], s.[Value], s.DataType, s.Description
+FROM (VALUES
+    ('OverdueNoticeTitle',   N'Important: fee overdue', 'string', N'Title of the popup. Placeholders: {Name} {Amount} {DueDate} {DaysOverdue} {Count} {Seat} {Section} {LibraryName}'),
+    ('OverdueNoticeMessage', N'Dear {Name}, your fee of Rs.{Amount} was due on {DueDate} and is {DaysOverdue} days overdue. Please pay now to keep your seat {Seat}.', 'string',
+                             N'Shown to students with an overdue fee after login. Same placeholders as the title. Leave empty to turn the popup off.')
+) AS s ([Key], [Value], DataType, Description)
+WHERE NOT EXISTS (SELECT 1 FROM dbo.Settings x WHERE x.[Key] = s.[Key]);
+
 -- Notification templates. Placeholders: {Name}, {Amount}, {DueDate}, {LibraryName}
 INSERT INTO dbo.NotificationTemplates (Name, Channel, Subject, Body)
 SELECT t.Name, t.Channel, t.Subject, t.Body

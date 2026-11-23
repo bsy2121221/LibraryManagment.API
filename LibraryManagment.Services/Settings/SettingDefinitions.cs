@@ -13,6 +13,7 @@ namespace LibraryManagement.Services.Settings
         public const string FeesAndBooking = "Fees & booking";
         public const string Billing = "Billing & overdue";
         public const string Footer = "Website footer";
+        public const string StudentNotices = "Student notices";
 
         public static readonly IReadOnlyList<SettingDefinition> All =
         [
@@ -22,6 +23,8 @@ namespace LibraryManagement.Services.Settings
             new(SettingKeys.InvoiceGenerationDaysBefore, "Create next month's fee this many days before the due date", Billing, "int", 0, 28),
             new(SettingKeys.GraceDays, "Grace days after the due date before a fee is overdue", Billing, "int", 0, 30),
             new(SettingKeys.AutoReleaseAfterOverdueDays, "Release the seat automatically after this many overdue days (0 = never)", Billing, "int", 0, 365),
+            new(SettingKeys.OverdueNoticeTitle, "Overdue fee popup - title", StudentNotices, "string", 0, 100),
+            new(SettingKeys.OverdueNoticeMessage, "Overdue fee popup - message (empty = no popup)", StudentNotices, "string", 0, 1000),
             new(SettingKeys.FooterAbout, "About the library (one line)", Footer, "string", 0, 200),
             new(SettingKeys.LibraryAddress, "Address", Footer, "string", 0, 300),
             new(SettingKeys.ContactPhone, "Phone", Footer, "string", 0, 20),

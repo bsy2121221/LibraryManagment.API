@@ -35,6 +35,7 @@ namespace LibraryManagement.Services.Extensions
             services.AddScoped<INotificationAdminService, NotificationAdminService>();
             services.AddScoped<IHomePageService, HomePageService>();
             services.AddScoped<IMediaService, MediaService>();
+            services.AddScoped<ISiteNoticeService, SiteNoticeService>();
 
             services.AddPaymentGateway(configuration);
             services.AddNotificationSenders(configuration);

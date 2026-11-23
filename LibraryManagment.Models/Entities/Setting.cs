@@ -31,5 +31,9 @@ namespace LibraryManagement.Models.Entities
         public const string InstagramUrl = "InstagramUrl";
         public const string FacebookUrl = "FacebookUrl";
         public const string YouTubeUrl = "YouTubeUrl";
+
+        // Important popup shown to a student with an overdue fee after login (empty message = no popup)
+        public const string OverdueNoticeTitle = "OverdueNoticeTitle";
+        public const string OverdueNoticeMessage = "OverdueNoticeMessage";
     }
 }

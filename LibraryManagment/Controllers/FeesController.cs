@@ -29,6 +29,14 @@ namespace LibraryManagement.API.Controllers
             return Ok(await _feeService.GetMyFeesAsync(User.GetUserId(), cancellationToken));
         }
 
+        // Important popup after login: 204 when there is nothing to show
+        [HttpGet("me/overdue-notice")]
+        public async Task<ActionResult<OverdueNoticeDto>> MyOverdueNotice(CancellationToken cancellationToken)
+        {
+            var notice = await _feeService.GetMyOverdueNoticeAsync(User.GetUserId(), cancellationToken);
+            return notice is null ? NoContent() : Ok(notice);
+        }
+
         [HttpPost("{id:int}/payment-order")]
         public async Task<ActionResult<PaymentOrderDto>> CreatePaymentOrder(int id, CancellationToken cancellationToken)
         {

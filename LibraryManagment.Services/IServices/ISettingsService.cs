@@ -11,6 +11,9 @@ namespace LibraryManagement.Services.IServices
         Task<int> GetSeatHoldMinutesAsync(CancellationToken cancellationToken = default);
         Task<BillingSettings> GetBillingSettingsAsync(CancellationToken cancellationToken = default);
 
+        // Admin-written popup for students with an overdue fee; Message is empty when the popup is switched off
+        Task<(string LibraryName, string Title, string Message)> GetOverdueNoticeAsync(CancellationToken cancellationToken = default);
+
         // Admin
         Task<IReadOnlyList<AdminSettingDto>> GetAllForAdminAsync(CancellationToken cancellationToken = default);
         Task<IReadOnlyList<AdminSettingDto>> UpdateAsync(int adminUserId, IDictionary<string, string> values, CancellationToken cancellationToken = default);
