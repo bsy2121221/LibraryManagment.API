@@ -61,6 +61,13 @@ namespace LibraryManagement.Services.Notifications
                     Require(options.Voice.Twilio.FromNumber, "Notifications:Voice:Twilio:FromNumber");
                     s.AddHttpClient<TwilioVoiceSender>(c => c.Timeout = TimeSpan.FromSeconds(30));
                     s.AddTransient<INotificationSender>(sp => sp.GetRequiredService<TwilioVoiceSender>());
+                },
+                ["fast2sms"] = s =>
+                {
+                    Require(options.Voice.Fast2Sms.ApiKey, "Notifications:Voice:Fast2Sms:ApiKey");
+                    Require(options.Voice.Fast2Sms.FileId.ToString(), "Notifications:Voice:Fast2Sms:FileId");
+                    s.AddHttpClient<Fast2SmsVoiceSender>(c => c.Timeout = TimeSpan.FromSeconds(30));
+                    s.AddTransient<INotificationSender>(sp => sp.GetRequiredService<Fast2SmsVoiceSender>());
                 }
             });
 

@@ -80,6 +80,13 @@ namespace LibraryManagement.Models.Options
     {
         public string Provider { get; set; } = "Mock";
         public TwilioOptions Twilio { get; set; } = new();
+        public Fast2SmsVoiceOptions Fast2Sms { get; set; } = new();
+
+    }
+    public class Fast2SmsVoiceOptions
+    {
+        public string ApiKey { get; set; } = string.Empty;
+        public int FileId { get; set; } 
     }
 
     public class TwilioOptions

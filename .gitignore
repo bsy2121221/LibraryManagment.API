@@ -25,5 +25,7 @@ obj/
 # User uploads
 **/wwwroot/uploads/
 
-# Local configuration
-appsettings.Development.json
+# Local / environment configuration (do not commit secrets)
+**/appsettings.json
+**/appsettings.*.json
+!**/appsettings.*.json.example

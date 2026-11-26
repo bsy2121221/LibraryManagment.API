@@ -212,4 +212,36 @@ namespace LibraryManagement.Services.Notifications
             return result.RootElement.TryGetProperty("sid", out var sid) ? sid.GetString() : null;
         }
     }
+
+    public class Fast2SmsVoiceSender : INotificationSender
+    {
+        private readonly HttpClient _httpClient;
+        private readonly NotificationOptions _options;
+        public Fast2SmsVoiceSender(HttpClient httpClient, IOptions<NotificationOptions> options)
+        {
+            _httpClient = httpClient;
+            _options = options.Value;
+        }
+        public NotificationChannel Channel => NotificationChannel.Call;
+        public string ProviderName => "Fast2Sms";
+        public async Task<string?> SendAsync(OutgoingMessage message, CancellationToken cancellationToken = default)
+        {
+            var cfg = _options.Voice.Fast2Sms;
+            if (cfg.FileId <= 0)
+                throw new NotificationSendException("Notifications:Voice:Fast2Sms:FileId must be a positive approved file id.", permanent: true);
+            // Fast2SMS wants 10-digit Indian numbers
+            var digits = new string(message.Recipient.Where(char.IsDigit).ToArray());
+            if (digits.Length == 12 && digits.StartsWith("91")) digits = digits[2..];
+            if (digits.Length == 11 && digits.StartsWith('0')) digits = digits[1..];
+            if (digits.Length != 10)
+                throw new NotificationSendException($"'{message.Recipient}' is not a 10-digit Indian mobile.", permanent: true);
+            using var request = new HttpRequestMessage(HttpMethod.Post, "https://www.fast2sms.com/dev/voice/bulk")
+            {
+                Content = JsonContent.Create(new { numbers = digits, file_id = cfg.FileId })
+            };
+            request.Headers.TryAddWithoutValidation("authorization", cfg.ApiKey);
+            using var result = await HttpSendHelper.SendAsync(_httpClient, request, ProviderName, cancellationToken);
+            return result.RootElement.TryGetProperty("request_id", out var id) ? id.GetString() : null;
+        }
+    }
 }
